@@ -156,7 +156,7 @@ radius = 11.0
 
 [node name="Demon" type="CharacterBody2D"]
 collision_layer = 8
-collision_mask = 18
+collision_mask = 26
 script = ExtResource("1_6cq5v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -241,6 +241,11 @@ script = ExtResource("3_ihjd8")
 [node name="Idle" type="Node" parent="StateChart/Root"]
 script = ExtResource("3_ihjd8")
 
+[node name="Die3" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("6_xh6xe")
+to = NodePath("../../Die")
+event = &"die"
+
 [node name="GoToPlayer" type="Node" parent="StateChart/Root/Idle"]
 script = ExtResource("6_xh6xe")
 to = NodePath("../../GoToPlayer")
@@ -250,6 +255,7 @@ event = &"go_to_player"
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Visibility"]
+visible = false
 shape = SubResource("CircleShape2D_takfe")
 debug_color = Color(0.647059, 0.517647, 0.12549, 0.137255)
 
@@ -257,6 +263,7 @@ debug_color = Color(0.647059, 0.517647, 0.12549, 0.137255)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IdleVisibility"]
+visible = false
 shape = SubResource("CircleShape2D_yem17")
 debug_color = Color(0.647059, 0.517647, 0.12549, 0.137255)
 
@@ -264,6 +271,7 @@ debug_color = Color(0.647059, 0.517647, 0.12549, 0.137255)
 
 [node name="Attack" type="Area2D" parent="AttackPivot"]
 position = Vector2(20, 0)
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackPivot/Attack"]
 shape = SubResource("CircleShape2D_yg4j1")
@@ -277,6 +285,12 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_po6an")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="state_entered" from="StateChart/Root/Walking" to="." method="_on_walking_state_entered"]
@@ -292,3 +306,5 @@ shape = SubResource("CircleShape2D_po6an")
 [connection signal="body_entered" from="IdleVisibility" to="." method="_on_idle_visibility_body_entered"]
 [connection signal="body_entered" from="AttackPivot/Attack" to="." method="_on_attack_body_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -45,10 +45,10 @@ position = Vector2(-109, -136)
 scale = Vector2(0.351562, 0.351562)
 texture = ExtResource("2_bfk0s")
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="Shader" type="CanvasLayer" parent="."]
 visible = false
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
+[node name="ColorRect" type="ColorRect" parent="Shader"]
 material = SubResource("ShaderMaterial_xwrqi")
 anchors_preset = 15
 anchor_right = 1.0

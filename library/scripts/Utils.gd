@@ -17,7 +17,10 @@ func frame_freeze(time_scale: float, duration: float):
 	await tween.finished
 	Engine.time_scale = start_scale
 
+
 static func get_tile_at(tilemap: TileMap, global_pos: Vector2, layer: int) -> TileData:
 	var local_pos = tilemap.to_local(global_pos)
 	var coords = tilemap.local_to_map(local_pos)
 	return tilemap.get_cell_tile_data(layer, coords)
+
+

@@ -16,6 +16,12 @@ func _physics_process(delta):
 		if collision.get_collider().name == caravan.name:
 			queue_free()
 
+func destroy():
+	$Particles1.emitting = false
+	$Particles2.emitting = false
+	get_node("/root/UtilsInstance").destroy_after($Particles1, get_parent(), 1.1)
+	get_node("/root/UtilsInstance").destroy_after($Particles2, get_parent(), 1.1)
+	queue_free()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	queue_free()
+	destroy()

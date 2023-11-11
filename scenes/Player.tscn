@@ -1,12 +1,18 @@
-[gd_scene load_steps=23 format=3 uid="uid://bmh6w5rpihe7x"]
+[gd_scene load_steps=25 format=3 uid="uid://bmh6w5rpihe7x"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_n43ng"]
+[ext_resource type="Script" path="res://library/scripts/CameraShake.gd" id="2_ktmtx"]
 [ext_resource type="Texture2D" uid="uid://cg25it17a52me" path="res://assets/wizard_shooting.png" id="3_a8rjc"]
 [ext_resource type="Texture2D" uid="uid://b3axu3nrmqki3" path="res://assets/wizard_prepare.png" id="4_6kw2m"]
 [ext_resource type="Script" path="res://library/scripts/Cooldown.gd" id="4_xl085"]
 [ext_resource type="Texture2D" uid="uid://dey5ve8q6mq4n" path="res://assets/wizard_idle.png" id="5_sbtgt"]
 [ext_resource type="Texture2D" uid="uid://siv462vqa644" path="res://assets/border.png" id="6_rw7i7"]
 [ext_resource type="Texture2D" uid="uid://dwk382eg4e650" path="res://assets/white.png" id="7_tic3v"]
+
+[sub_resource type="Curve" id="Curve_ewt3i"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.102713, -1), 0.0, 0.0, 0, 0, Vector2(0.170782, 0.816284), 0.0, 0.0, 0, 0, Vector2(0.244856, -0.72025), 0.0, 0.0, 0, 0, Vector2(0.351852, 0.582464), 0.0, 0.0, 0, 0, Vector2(0.421811, -0.519833), 0.0, 0.0, 0, 0, Vector2(0.5, 0.43215), 0.0, 0.0, 0, 0, Vector2(0.553498, -0.336117), 0.0, 0.0, 0, 0, Vector2(0.623457, 0.348643), 0.0, 0.0, 0, 0, Vector2(0.697531, -0.169102), 0.0, 0.0, 0, 0, Vector2(0.779835, 0.298539), 0.0, 0.0, 0, 0, Vector2(0.800412, -0.185804), 0.0, 0.0, 0, 0, Vector2(0.886831, 0.19833), 0.0, 0.0, 0, 0, Vector2(0.940329, -0.135699), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 15
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_llq8b"]
 size = Vector2(11, 14)
@@ -151,13 +157,19 @@ _data = {
 "fireball": SubResource("Animation_hf67n")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("camera")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("camera") groups=["player"]]
 collision_mask = 26
 script = ExtResource("1_n43ng")
 speed = 100
 camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CameraShake" type="Node" parent="Camera2D"]
+script = ExtResource("2_ktmtx")
+scale = 5.0
+offset_y = SubResource("Curve_ewt3i")
+duration_s = 0.7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_llq8b")

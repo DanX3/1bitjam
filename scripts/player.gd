@@ -57,6 +57,8 @@ func _on_animated_sprite_2d_animation_finished():
 		sprite.play("idle")
 
 func take_damage(damage: float):
+	if damage > fireballCost:
+		$Camera2D/CameraShake.shake()
 	life -= damage
 	progress.value = life
 	if life <= 0.0:

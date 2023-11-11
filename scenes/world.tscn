@@ -1,14 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://bdu2ye7hxuwnb"]
+[gd_scene load_steps=21 format=3 uid="uid://bdu2ye7hxuwnb"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_wy5lg"]
-[ext_resource type="Texture2D" uid="uid://pdljmexgqgda" path="res://assets/tiles_evil.png" id="1_xx67n"]
+[ext_resource type="Texture2D" uid="uid://62kv2g1klkqi" path="res://assets/tiles_evil.png" id="1_xx67n"]
 [ext_resource type="PackedScene" uid="uid://bmh6w5rpihe7x" path="res://scenes/Player.tscn" id="1_ybli1"]
 [ext_resource type="PackedScene" uid="uid://c74bo6ax7y0p5" path="res://scenes/caravan.tscn" id="2_al6kb"]
-[ext_resource type="Texture2D" uid="uid://byt8h66f5eqqh" path="res://assets/tiles_medium.png" id="2_qa7fb"]
+[ext_resource type="Texture2D" uid="uid://cc8p73d1uqmrs" path="res://assets/tiles_medium.png" id="2_qa7fb"]
 [ext_resource type="Texture2D" uid="uid://c21djs5monrq" path="res://assets/tiles_walls.png" id="5_fs8it"]
 [ext_resource type="Texture2D" uid="uid://bksu87d3p4htp" path="res://assets/road.png" id="6_n8ft0"]
 [ext_resource type="Texture2D" uid="uid://oxhhtrudghfh" path="res://assets/green_tiles.png" id="6_vr5rp"]
 [ext_resource type="PackedScene" uid="uid://cp6xrx3c021e0" path="res://scenes/demon_camp.tscn" id="9_lf4ax"]
+[ext_resource type="PackedScene" uid="uid://by600etqyr3av" path="res://scenes/demon.tscn" id="10_que6m"]
+[ext_resource type="Shader" path="res://library/shaders/black_white.gdshader" id="11_tq6mm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bhkcy"]
 texture = ExtResource("1_xx67n")
@@ -76,6 +78,12 @@ size = Vector2(72, 3776)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8oeb2"]
 size = Vector2(1151, 87)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wdca1"]
+shader = ExtResource("11_tq6mm")
+shader_parameter/threshold = 0.41
+shader_parameter/color1 = Color(0.0392157, 0.180392, 0.266667, 1)
+shader_parameter/color2 = Color(0.988235, 1, 0.8, 1)
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_wy5lg")
@@ -163,3 +171,19 @@ position = Vector2(733, -2886)
 
 [node name="demon_camp10" parent="prisoner_camps" instance=ExtResource("9_lf4ax")]
 position = Vector2(247, -3140)
+
+[node name="Demon" parent="." instance=ExtResource("10_que6m")]
+position = Vector2(426, 154)
+
+[node name="demon_camp" parent="." instance=ExtResource("9_lf4ax")]
+position = Vector2(601, 103)
+
+[node name="Shader" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Shader"]
+material = SubResource("ShaderMaterial_wdca1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-const WALK_SPEED = 30.0
+const WALK_SPEED = 40.0
 const PLAYER_PROXIMITY = 20.0
-const ATTACK_ANGLE = 0.8 * PI 
+const ATTACK_ANGLE = 1.2 * PI 
 const PLAYER_DAMAGE = 5.0
 
 var player: Player
@@ -126,3 +126,12 @@ func _on_idle_visibility_body_entered(body):
 	if body is Player:
 		player = body
 		chart.send_event("go_to_player")
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered():
+	$Timer.start()
+
+
+func _on_timer_timeout():
+	player = get_tree().get_first_node_in_group("player")
+	chart.send_event("go_to_player")

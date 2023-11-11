@@ -1,14 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://c74bo6ax7y0p5"]
+[gd_scene load_steps=7 format=3 uid="uid://c74bo6ax7y0p5"]
 
 [ext_resource type="Script" path="res://scripts/caravan.gd" id="1_bvopd"]
 [ext_resource type="Texture2D" uid="uid://d2uvfm8pstq0m" path="res://assets/tileset.png" id="2_lhjpw"]
 [ext_resource type="FontFile" uid="uid://d584xxy53m8x" path="res://assets/ArcadeFont.ttf" id="3_asf5t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vg50"]
-size = Vector2(4.17701, 134.766)
+size = Vector2(41.7703, 80.5036)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vp10o"]
 size = Vector2(62.6554, 103.941)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hjh0"]
+size = Vector2(37.7921, 75.4084)
 
 [node name="Caravan" type="CharacterBody2D" groups=["caravan"]]
 scale = Vector2(1.0055, 0.981323)
@@ -25,9 +28,7 @@ region_enabled = true
 region_rect = Rect2(0, 192, 64.1936, 96.1646)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(3.5567e-07, 8.70499)
-scale = Vector2(10, 0.598)
+position = Vector2(-9.48458e-07, 8.66177)
 shape = SubResource("RectangleShape2D_4vg50")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -42,14 +43,6 @@ position = Vector2(-0.497264, 8.15226)
 shape = SubResource("RectangleShape2D_vp10o")
 debug_color = Color(0.647059, 0.521569, 0, 0.419608)
 
-[node name="EnemyCounter" type="Label" parent="."]
-offset_left = -18.8961
-offset_top = 7.13323
-offset_right = 21.1039
-offset_bottom = 33.1332
-text = "0"
-horizontal_alignment = 1
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HumansCounter" type="Label" parent="CanvasLayer"]
@@ -62,5 +55,15 @@ theme_override_fonts/font = ExtResource("3_asf5t")
 theme_override_font_sizes/font_size = 16
 text = "0"
 
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 9.17129)
+shape = SubResource("RectangleShape2D_0hjh0")
+
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_enemy_detector_body_entered"]
 [connection signal="body_exited" from="EnemyDetector" to="." method="_on_enemy_detector_body_exited"]
+[connection signal="area_shape_entered" from="HurtBox" to="." method="_on_hurt_box_area_shape_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
