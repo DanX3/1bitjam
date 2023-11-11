@@ -1,21 +1,26 @@
 [gd_scene load_steps=4 format=3 uid="uid://cv68rdgr3tata"]
 
 [ext_resource type="Script" path="res://scripts/caravan.gd" id="1_bvopd"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_46lwo"]
+[ext_resource type="Texture2D" uid="uid://bnnwx8aow2748" path="res://assets/tileset.png" id="2_lhjpw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vg50"]
-size = Vector2(6, 11)
+size = Vector2(4.17701, 134.766)
 
-[node name="Caravan" type="RigidBody2D" node_paths=PackedStringArray("start_position")]
-mass = 0.1
-gravity_scale = 0.0
+[node name="Caravan" type="CharacterBody2D"]
+scale = Vector2(1.0055, 0.981323)
 script = ExtResource("1_bvopd")
-start_position = NodePath("")
+speed = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(5.5, 10.5)
-texture = SubResource("CanvasTexture_46lwo")
+texture_filter = 1
+scale = Vector2(0.942604, 1.01071)
+texture = ExtResource("2_lhjpw")
+region_enabled = true
+region_rect = Rect2(0, 192, 64.1936, 96.1646)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5567e-07, 8.70499)
+scale = Vector2(10, 0.598)
 shape = SubResource("RectangleShape2D_4vg50")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
