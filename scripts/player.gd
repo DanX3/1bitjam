@@ -12,23 +12,29 @@ var fireballScene = preload("res://scenes/fireball.tscn")
 var walk_dir: Vector2
 var camera_point := Vector2.ZERO
 const fireballDistance = 20.0
+const fireballCost = 0.75
+var life = 100.0
 @onready var cooldown: Cooldown = $Cooldown
 @onready var pivot = $Pivot
 @onready var sprite = $AnimatedSprite2D
 @onready var player = $AnimationPlayer
+@onready var progress = $CanvasLayer/TextureProgressBar
 
 func _ready():
 	sprite.play("idle")
+	progress.value = life
 
 func _input(event):
 	if Input.is_action_just_pressed("fire") and cooldown.is_ready():
 		player.play("fireball")
 
 func spawn_fireball():
+		life -= fireballCost
+		progress.value = life
 		var fireball = fireballScene.instantiate()
 		var fireballDir = (get_global_mouse_position() - global_position).normalized()
 		fireball.init(fireballDir)
-		add_child(fireball)
+		get_parent().add_child(fireball)
 		fireball.global_position = global_position + fireballDir * fireballDistance
 		
 

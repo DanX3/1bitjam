@@ -2,7 +2,7 @@ class_name Fireball extends CharacterBody2D
 
 const SPEED := 200.0
 var direction
-var caravan: Caravan
+var caravan
 
 func init(dir: Vector2):
 	direction = dir

@@ -22,7 +22,7 @@ animations = [{
 }]
 
 [node name="Refugee" type="CharacterBody2D"]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 18
 script = ExtResource("1_cjycd")
 

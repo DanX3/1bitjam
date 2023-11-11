@@ -16,6 +16,7 @@ shader_parameter/color2 = Color(0.988235, 1, 0.8, 1)
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_ge0oy")]
+collision_mask = 26
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -57,11 +58,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Demon" parent="." instance=ExtResource("4_5ri2g")]
-position = Vector2(0, -105)
+position = Vector2(69, -171)
 
 [node name="Caravan" parent="." instance=ExtResource("5_sgd8v")]
-collision_layer = 2
-collision_mask = 0
 speed = 20
 
 [node name="Marker2D" type="Marker2D" parent="."]

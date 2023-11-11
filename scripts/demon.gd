@@ -40,10 +40,8 @@ func _on_go_to_player_state_physics_processing(delta):
 	velocity = WALK_SPEED * playerDir
 	var collision = move_and_collide(delta * velocity)
 	if collision != null:
-		print("collided")
 		print(collision.get_collider().name)
 		if collision.get_collider().name == "Caravan":
-			print("found caravan")
 			chart.send_event("attack_caravan")
 
 

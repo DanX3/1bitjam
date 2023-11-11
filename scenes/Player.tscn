@@ -1,10 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://bmh6w5rpihe7x"]
+[gd_scene load_steps=23 format=3 uid="uid://bmh6w5rpihe7x"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_n43ng"]
 [ext_resource type="Texture2D" uid="uid://cg25it17a52me" path="res://assets/wizard_shooting.png" id="3_a8rjc"]
 [ext_resource type="Texture2D" uid="uid://b3axu3nrmqki3" path="res://assets/wizard_prepare.png" id="4_6kw2m"]
 [ext_resource type="Script" path="res://library/scripts/Cooldown.gd" id="4_xl085"]
 [ext_resource type="Texture2D" uid="uid://dey5ve8q6mq4n" path="res://assets/wizard_idle.png" id="5_sbtgt"]
+[ext_resource type="Texture2D" uid="uid://siv462vqa644" path="res://assets/border.png" id="6_rw7i7"]
+[ext_resource type="Texture2D" uid="uid://dwk382eg4e650" path="res://assets/white.png" id="7_tic3v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_llq8b"]
 size = Vector2(11, 14)
@@ -79,7 +81,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 10.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -136,7 +138,7 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.3),
+"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -170,13 +172,35 @@ script = ExtResource("4_xl085")
 texture_filter = 1
 position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_h2xqe")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
-frame_progress = 0.153445
+frame = 6
+frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_lq4tj")
 }
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = -29.0
+offset_right = 112.0
+offset_bottom = -20.0
+grow_vertical = 0
+step = 0.01
+value = 30.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("6_rw7i7")
+texture_progress = ExtResource("7_tic3v")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
