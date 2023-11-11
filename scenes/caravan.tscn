@@ -15,7 +15,7 @@ scale = Vector2(1.0055, 0.981323)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_bvopd")
-speed = 100
+speed = 20
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

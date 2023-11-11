@@ -1,12 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://bmh6w5rpihe7x"]
+[gd_scene load_steps=21 format=3 uid="uid://bmh6w5rpihe7x"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_n43ng"]
-[ext_resource type="Texture2D" uid="uid://cg25it17a52me" path="res://assets/wizard_shooting.png" id="3_a8rjc"]
+[ext_resource type="Texture2D" uid="uid://or8hq3jr1moe" path="res://assets/wizard_shooting.png" id="3_a8rjc"]
 [ext_resource type="Texture2D" uid="uid://b3axu3nrmqki3" path="res://assets/wizard_prepare.png" id="4_6kw2m"]
 [ext_resource type="Script" path="res://library/scripts/Cooldown.gd" id="4_xl085"]
-[ext_resource type="Texture2D" uid="uid://dey5ve8q6mq4n" path="res://assets/wizard_idle.png" id="5_sbtgt"]
-[ext_resource type="Texture2D" uid="uid://siv462vqa644" path="res://assets/border.png" id="6_rw7i7"]
-[ext_resource type="Texture2D" uid="uid://dwk382eg4e650" path="res://assets/white.png" id="7_tic3v"]
+[ext_resource type="Texture2D" uid="uid://cjqke5ul4nod5" path="res://assets/wizard_idle.png" id="5_sbtgt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_llq8b"]
 size = Vector2(11, 14)
@@ -152,7 +150,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("camera")]
-collision_mask = 10
+collision_mask = 26
 script = ExtResource("1_n43ng")
 speed = 100
 camera = NodePath("Camera2D")
@@ -200,7 +198,5 @@ stretch_margin_left = 4
 stretch_margin_top = 4
 stretch_margin_right = 4
 stretch_margin_bottom = 4
-texture_under = ExtResource("6_rw7i7")
-texture_progress = ExtResource("7_tic3v")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

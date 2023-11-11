@@ -51,6 +51,7 @@ script = ExtResource("1_wy5lg")
 
 [node name="Player" parent="." instance=ExtResource("1_ybli1")]
 position = Vector2(361, 219)
+collision_mask = 26
 
 [node name="Label" type="Label" parent="Player"]
 offset_left = -20.0
@@ -99,5 +100,4 @@ position = Vector2(-559.5, 421.5)
 shape = SubResource("RectangleShape2D_8oeb2")
 
 [node name="Caravan" parent="." instance=ExtResource("2_al6kb")]
-position = Vector2(419, 214)
-speed = 20
+position = Vector2(419, 269)
