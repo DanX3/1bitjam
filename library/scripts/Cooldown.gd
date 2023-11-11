@@ -24,7 +24,7 @@ func start():
 
 ## Return a boolean indicating if the cooldown is ready to be used or not
 func is_ready():
-	print("is ready: ", can_trigger)
+#	print("is ready: ", can_trigger)
 	return can_trigger
 
 func get_progress() -> float:

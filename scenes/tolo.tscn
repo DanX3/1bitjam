@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgvrneq1gcki0"]
+
+[ext_resource type="PackedScene" uid="uid://bmh6w5rpihe7x" path="res://scenes/Player.tscn" id="1_ge0oy"]
+[ext_resource type="Texture2D" uid="uid://odkd3j1xpvks" path="res://icon.svg" id="2_bfk0s"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ge0oy")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = -40.0
+offset_right = 262.0
+offset_bottom = -22.0
+grow_vertical = 0
+value = 21.0
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(-138, 26)
+texture = ExtResource("2_bfk0s")
