@@ -5,7 +5,6 @@ const PLAYER_PROXIMITY = 20.0
 const ATTACK_ANGLE = 0.8 * PI 
 const PLAYER_DAMAGE = 5.0
 
-
 var player: Player
 @onready var chart: StateChart = $StateChart
 @onready var attackPivot: Node2D = $AttackPivot
