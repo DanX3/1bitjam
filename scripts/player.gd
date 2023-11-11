@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name  Player
+
 @export var speed := 200
 @export var camera: Camera2D
 @export var camera_distance := 200.0

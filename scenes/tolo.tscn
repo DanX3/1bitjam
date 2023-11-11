@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgvrneq1gcki0"]
+[gd_scene load_steps=6 format=3 uid="uid://bgvrneq1gcki0"]
 
 [ext_resource type="PackedScene" uid="uid://bmh6w5rpihe7x" path="res://scenes/Player.tscn" id="1_ge0oy"]
 [ext_resource type="Texture2D" uid="uid://odkd3j1xpvks" path="res://icon.svg" id="2_bfk0s"]
 [ext_resource type="Shader" path="res://library/shaders/black_white.gdshader" id="3_x3wcj"]
+[ext_resource type="PackedScene" uid="uid://by600etqyr3av" path="res://scenes/demon.tscn" id="4_5ri2g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xwrqi"]
 shader = ExtResource("3_x3wcj")
@@ -32,7 +33,18 @@ position = Vector2(-74, 25)
 scale = Vector2(0.351562, 0.351562)
 texture = ExtResource("2_bfk0s")
 
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(96, -61)
+scale = Vector2(0.351562, 0.351562)
+texture = ExtResource("2_bfk0s")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+position = Vector2(-109, -136)
+scale = Vector2(0.351562, 0.351562)
+texture = ExtResource("2_bfk0s")
+
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
 material = SubResource("ShaderMaterial_xwrqi")
@@ -41,3 +53,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Demon" parent="." instance=ExtResource("4_5ri2g")]
+position = Vector2(0, -105)
