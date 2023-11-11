@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cv68rdgr3tata"]
+[gd_scene load_steps=5 format=3 uid="uid://c74bo6ax7y0p5"]
 
 [ext_resource type="Script" path="res://scripts/caravan.gd" id="1_bvopd"]
-[ext_resource type="Texture2D" uid="uid://bnnwx8aow2748" path="res://assets/tileset.png" id="2_lhjpw"]
+[ext_resource type="Texture2D" uid="uid://d2uvfm8pstq0m" path="res://assets/tileset.png" id="2_lhjpw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vg50"]
 size = Vector2(4.17701, 134.766)
 
-[node name="Caravan" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vp10o"]
+size = Vector2(62.6554, 103.941)
+
+[node name="Caravan" type="CharacterBody2D" groups=["caravan"]]
 scale = Vector2(1.0055, 0.981323)
 script = ExtResource("1_bvopd")
 speed = 100
@@ -24,3 +27,23 @@ scale = Vector2(10, 0.598)
 shape = SubResource("RectangleShape2D_4vg50")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="EnemyDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+position = Vector2(-0.497264, 8.15226)
+shape = SubResource("RectangleShape2D_vp10o")
+debug_color = Color(0.647059, 0.521569, 0, 0.419608)
+
+[node name="Counter" type="Label" parent="."]
+offset_left = -18.8961
+offset_top = 7.13323
+offset_right = 21.1039
+offset_bottom = 33.1332
+text = "1"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="EnemyDetector" to="." method="_on_enemy_detector_body_entered"]
+[connection signal="body_exited" from="EnemyDetector" to="." method="_on_enemy_detector_body_exited"]

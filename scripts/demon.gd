@@ -10,7 +10,7 @@ var player: Player
 
 
 func _on_walking_state_physics_processing(delta):
-	velocity = WALK_SPEED * Vector2.DOWN
+	velocity = WALK_SPEED * (get_tree().get_first_node_in_group("caravan").global_position - global_position).normalized()
 	move_and_slide()
 
 
