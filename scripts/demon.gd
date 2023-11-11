@@ -5,6 +5,7 @@ const PLAYER_PROXIMITY = 20.0
 const ATTACK_ANGLE = 0.8 * PI 
 const PLAYER_DAMAGE = 5.0
 
+
 var player: Player
 @onready var chart: StateChart = $StateChart
 @onready var attackPivot: Node2D = $AttackPivot
@@ -120,3 +121,9 @@ func _on_attack_caravan_state_exited():
 
 func _on_die_state_entered():
 	sprite.play("die")
+
+
+func _on_idle_visibility_body_entered(body):
+	if body is Player:
+		player = body
+		chart.send_event("go_to_player")
