@@ -12,7 +12,13 @@ var player: Player
 func _on_walking_state_physics_processing(delta):
 	var caravanPos = get_tree().get_first_node_in_group("caravan").global_position
 	velocity = WALK_SPEED * (caravanPos - global_position).normalized()
-	move_and_slide()
+	var collision = move_and_collide(delta * velocity)
+	if collision != null:
+		print("collided")
+		print(collision.get_collider().name)
+		if collision.get_collider().name == "Caravan":
+			print("found caravan")
+			chart.send_event("attack_caravan")
 
 
 func _on_visibility_body_entered(body):
@@ -32,7 +38,13 @@ func _on_go_to_player_state_physics_processing(delta):
 		return
 	var playerDir = playerDist.normalized()
 	velocity = WALK_SPEED * playerDir
-	move_and_slide()
+	var collision = move_and_collide(delta * velocity)
+	if collision != null:
+		print("collided")
+		print(collision.get_collider().name)
+		if collision.get_collider().name == "Caravan":
+			print("found caravan")
+			chart.send_event("attack_caravan")
 
 
 func _on_attack_state_entered():
@@ -56,3 +68,15 @@ func _on_hurt_box_body_entered(body):
 	if body is Fireball:
 		body.queue_free()
 		queue_free()
+
+
+func _on_attack_caravan_state_entered():
+	attack_caravan()
+	
+func attack_caravan():
+	var caravanDir = get_tree().get_first_node_in_group("caravan").global_position - global_position
+	var caravanAngle = atan2(caravanDir.y, caravanDir.x)
+	attackPivot.rotation = caravanAngle - 0.5 * ATTACK_ANGLE
+	var tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(attackPivot, "rotation", attackPivot.rotation + ATTACK_ANGLE, 1.2)
+	tween.connect("finished", attack_caravan)

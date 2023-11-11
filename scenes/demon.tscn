@@ -65,6 +65,11 @@ script = ExtResource("6_xh6xe")
 to = NodePath("../../GoToPlayer")
 event = &"found_player"
 
+[node name="AttackCaravan" type="Node" parent="StateChart/Root/Walking"]
+script = ExtResource("6_xh6xe")
+to = NodePath("../../AttackCaravan")
+event = &"attack_caravan"
+
 [node name="GoToPlayer" type="Node" parent="StateChart/Root"]
 script = ExtResource("3_ihjd8")
 
@@ -80,6 +85,14 @@ script = ExtResource("3_ihjd8")
 script = ExtResource("6_xh6xe")
 to = NodePath("../../GoToPlayer")
 event = &"go_to_player"
+
+[node name="AttackCaravan" type="Node" parent="StateChart/Root"]
+script = ExtResource("3_ihjd8")
+
+[node name="FoundPlayer" type="Node" parent="StateChart/Root/AttackCaravan"]
+script = ExtResource("6_xh6xe")
+to = NodePath("../../GoToPlayer")
+event = &"found_player"
 
 [node name="Visibility" type="Area2D" parent="."]
 collision_layer = 0
@@ -109,5 +122,6 @@ shape = SubResource("CircleShape2D_po6an")
 [connection signal="state_physics_processing" from="StateChart/Root/Walking" to="." method="_on_walking_state_physics_processing"]
 [connection signal="state_physics_processing" from="StateChart/Root/GoToPlayer" to="." method="_on_go_to_player_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/Root/Attack" to="." method="_on_attack_state_entered"]
+[connection signal="state_entered" from="StateChart/Root/AttackCaravan" to="." method="_on_attack_caravan_state_entered"]
 [connection signal="body_entered" from="Visibility" to="." method="_on_visibility_body_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
