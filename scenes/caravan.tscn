@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv68rdgr3tata"]
+
+[ext_resource type="Script" path="res://scripts/caravan.gd" id="1_bvopd"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_46lwo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4vg50"]
+size = Vector2(6, 11)
+
+[node name="Caravan" type="RigidBody2D" node_paths=PackedStringArray("start_position")]
+mass = 0.1
+gravity_scale = 0.0
+script = ExtResource("1_bvopd")
+start_position = NodePath("")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5.5, 10.5)
+texture = SubResource("CanvasTexture_46lwo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4vg50")
