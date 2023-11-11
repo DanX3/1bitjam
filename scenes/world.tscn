@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bdu2ye7hxuwnb"]
+[gd_scene load_steps=18 format=3 uid="uid://bdu2ye7hxuwnb"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_wy5lg"]
 [ext_resource type="Texture2D" uid="uid://pdljmexgqgda" path="res://assets/tiles_evil.png" id="1_xx67n"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c21djs5monrq" path="res://assets/tiles_walls.png" id="5_fs8it"]
 [ext_resource type="Texture2D" uid="uid://bksu87d3p4htp" path="res://assets/road.png" id="6_n8ft0"]
 [ext_resource type="Texture2D" uid="uid://oxhhtrudghfh" path="res://assets/green_tiles.png" id="6_vr5rp"]
+[ext_resource type="PackedScene" uid="uid://cp6xrx3c021e0" path="res://scenes/demon_camp.tscn" id="9_lf4ax"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bhkcy"]
 texture = ExtResource("1_xx67n")
@@ -128,5 +129,37 @@ position = Vector2(1020, -3700)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="world borders/StaticBody2D4"]
-position = Vector2(-559.5, 421.5)
+position = Vector2(-560, 442)
 shape = SubResource("RectangleShape2D_8oeb2")
+
+[node name="prisoner_camps" type="Node" parent="."]
+
+[node name="demon_camp" parent="prisoner_camps" instance=ExtResource("9_lf4ax")]
+position = Vector2(165, -7)
+
+[node name="demon_camp2" parent="prisoner_camps" instance=ExtResource("9_lf4ax")]
+position = Vector2(692, -372)
+
+[node name="demon_camp3" parent="prisoner_camps" instance=ExtResource("9_lf4ax")]
+position = Vector2(172, -590)
+
+[node name="demon_camp4" parent="prisoner_camps" instance=ExtResource("9_lf4ax")]
+position = Vector2(706, -1001)
+
+[node name="demon_camp5" parent="prisoner_camps" instance=ExtResource("9_lf4ax")]
+position = Vector2(168, -1187)
+
+[node name="demon_camp6" parent="prisoner_camps" instance=ExtResource("9_lf4ax")]
+position = Vector2(801, -1650)
+
+[node name="demon_camp7" parent="prisoner_camps" instance=ExtResource("9_lf4ax")]
+position = Vector2(694, -2132)
+
+[node name="demon_camp8" parent="prisoner_camps" instance=ExtResource("9_lf4ax")]
+position = Vector2(227, -2493)
+
+[node name="demon_camp9" parent="prisoner_camps" instance=ExtResource("9_lf4ax")]
+position = Vector2(733, -2886)
+
+[node name="demon_camp10" parent="prisoner_camps" instance=ExtResource("9_lf4ax")]
+position = Vector2(247, -3140)

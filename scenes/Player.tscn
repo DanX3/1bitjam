@@ -1,7 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://bmh6w5rpihe7x"]
+[gd_scene load_steps=23 format=3 uid="uid://bmh6w5rpihe7x"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_n43ng"]
-[ext_resource type="Shader" path="res://library/shaders/outline_sprite.gdshader" id="3_11wkb"]
 [ext_resource type="Texture2D" uid="uid://cg25it17a52me" path="res://assets/wizard_shooting.png" id="3_a8rjc"]
 [ext_resource type="Texture2D" uid="uid://b3axu3nrmqki3" path="res://assets/wizard_prepare.png" id="4_6kw2m"]
 [ext_resource type="Script" path="res://library/scripts/Cooldown.gd" id="4_xl085"]
@@ -11,13 +10,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_llq8b"]
 size = Vector2(11, 14)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2nlu5"]
-shader = ExtResource("3_11wkb")
-shader_parameter/width = 0.15
-shader_parameter/color = null
-shader_parameter/alpha_margin = 0.25
-shader_parameter/uv_scale = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_axs5s"]
 atlas = ExtResource("3_a8rjc")
@@ -179,7 +171,6 @@ duration = 0.7
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_2nlu5")
 position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_h2xqe")
 animation = &"attack"

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp6xrx3c021e0"]
+
+[ext_resource type="PackedScene" path="res://scenes/prisoner.tscn" id="2_1etim"]
+[ext_resource type="PackedScene" path="res://scenes/demon_idle.tscn" id="2_u6ian"]
+
+[node name="demon_camp" type="Node2D"]
+
+[node name="Demon" parent="." instance=ExtResource("2_u6ian")]
+position = Vector2(-14, -19)
+
+[node name="Demon2" parent="." instance=ExtResource("2_u6ian")]
+position = Vector2(-14, 25)
+
+[node name="Demon3" parent="." instance=ExtResource("2_u6ian")]
+position = Vector2(18, 24)
+
+[node name="Prisoner" parent="." instance=ExtResource("2_1etim")]
+position = Vector2(22, -9)
