@@ -4,11 +4,14 @@ class_name Caravan extends CharacterBody2D
 @export var refugees: int = 10
 
 @onready var counterLabel = $CanvasLayer/HumansCounter
+@onready var passengerSprite = $Passengers
 
 var closeDemonsCounter = 0
 
 func _ready():
 	counterLabel.text = str(refugees)
+	if refugees > 0:
+		passengerSprite.visible = true
 
 func _process(delta):
 	if closeDemonsCounter > 0:
@@ -23,11 +26,14 @@ func take_damage():
 	refugees -= 1
 	counterLabel.text = str(refugees)
 	if refugees <= 0:
+		passengerSprite.visible = false		
 		EventBusInstance.emit_signal("game_over")
 
 func add_refugee():
 	refugees += 1
 	counterLabel.text = str(refugees)
+	passengerSprite.visible = true
+	
 
 func _on_enemy_detector_body_entered(body):
 	closeDemonsCounter += 1
