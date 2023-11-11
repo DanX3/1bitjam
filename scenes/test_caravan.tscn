@@ -1,13 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://b1b7gna46hxqn"]
 
-[ext_resource type="PackedScene" uid="uid://cv68rdgr3tata" path="res://scenes/caravan.tscn" id="1_62b4k"]
+[ext_resource type="PackedScene" uid="uid://c74bo6ax7y0p5" path="res://scenes/caravan.tscn" id="1_62b4k"]
 [ext_resource type="Texture2D" uid="uid://odkd3j1xpvks" path="res://icon.svg" id="2_um3bd"]
 
 [node name="test_caravan" type="Node2D"]
-scale = Vector2(0.997518, 1)
-
-[node name="start_pos" type="Node2D" parent="."]
-position = Vector2(53.8646, 70.4666)
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(47.754, 30.1608)
@@ -54,8 +50,7 @@ position = Vector2(72.8757, -25.7738)
 scale = Vector2(0.101501, 0.113279)
 texture = ExtResource("2_um3bd")
 
-[node name="Caravan" parent="." node_paths=PackedStringArray("start_position") instance=ExtResource("1_62b4k")]
-start_position = NodePath("../start_pos")
+[node name="Caravan" parent="." instance=ExtResource("1_62b4k")]
 
 [node name="Camera2D" type="Camera2D" parent="Caravan"]
 scale = Vector2(0.971966, 1.00182)

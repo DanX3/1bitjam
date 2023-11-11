@@ -66,3 +66,7 @@ fire={
 2d_physics/layer_3="Fireball"
 2d_physics/layer_4="Enemy"
 2d_physics/layer_5="Caravan"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
