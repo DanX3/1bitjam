@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgvrneq1gcki0"]
+[gd_scene load_steps=5 format=3 uid="uid://bgvrneq1gcki0"]
 
 [ext_resource type="PackedScene" uid="uid://bmh6w5rpihe7x" path="res://scenes/Player.tscn" id="1_ge0oy"]
 [ext_resource type="Texture2D" uid="uid://odkd3j1xpvks" path="res://icon.svg" id="2_bfk0s"]
+[ext_resource type="Shader" path="res://library/shaders/black_white.gdshader" id="3_x3wcj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xwrqi"]
+shader = ExtResource("3_x3wcj")
+shader_parameter/threshold = 0.41
+shader_parameter/color1 = Color(0.0392157, 0.180392, 0.266667, 1)
+shader_parameter/color2 = Color(0.988235, 1, 0.8, 1)
 
 [node name="Node2D" type="Node2D"]
 
@@ -21,5 +28,16 @@ grow_vertical = 0
 value = 21.0
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-138, 26)
+position = Vector2(-74, 25)
+scale = Vector2(0.351562, 0.351562)
 texture = ExtResource("2_bfk0s")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
+material = SubResource("ShaderMaterial_xwrqi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,6 +1,7 @@
 class_name Events extends Node
 
 func _ready():
+	add_user_signal("game_over")
 	# add user signals here
 
 #add_user_signal("hurt", [
