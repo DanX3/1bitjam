@@ -1,24 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://cl7tyo2fnat2d"]
+[gd_scene load_steps=9 format=3 uid="uid://cl7tyo2fnat2d"]
 
 [ext_resource type="Script" path="res://scripts/refugee.gd" id="1_cjycd"]
-[ext_resource type="Texture2D" uid="uid://d2uvfm8pstq0m" path="res://assets/tileset.png" id="2_ttke4"]
+[ext_resource type="Texture2D" uid="uid://dcvtw07b1dm03" path="res://assets/runner.png" id="2_ylley"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ng8l"]
 size = Vector2(14, 14)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m3p2x"]
-atlas = ExtResource("2_ttke4")
-region = Rect2(64, 64, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_slgmy"]
+atlas = ExtResource("2_ylley")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dx2j"]
+atlas = ExtResource("2_ylley")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sax1b"]
+atlas = ExtResource("2_ylley")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7afk"]
+atlas = ExtResource("2_ylley")
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s06ae"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m3p2x")
+"texture": SubResource("AtlasTexture_slgmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dx2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sax1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7afk")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="Refugee" type="CharacterBody2D"]
@@ -35,3 +56,4 @@ texture_filter = 1
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_s06ae")
 autoplay = "default"
+frame_progress = 0.480664
