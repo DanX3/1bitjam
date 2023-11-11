@@ -14,15 +14,23 @@ var camera_point := Vector2.ZERO
 const fireballDistance = 20.0
 @onready var cooldown: Cooldown = $Cooldown
 @onready var pivot = $Pivot
+@onready var sprite = $AnimatedSprite2D
+@onready var player = $AnimationPlayer
+
+func _ready():
+	sprite.play("idle")
 
 func _input(event):
 	if Input.is_action_just_pressed("fire") and cooldown.is_ready():
-		cooldown.start()
+		player.play("fireball")
+
+func spawn_fireball():
 		var fireball = fireballScene.instantiate()
 		var fireballDir = (get_global_mouse_position() - global_position).normalized()
 		fireball.init(fireballDir)
 		add_child(fireball)
 		fireball.global_position = global_position + fireballDir * fireballDistance
+		
 
 #func _process(delta):
 #	if camera != null:
@@ -37,3 +45,8 @@ func _physics_process(delta):
 	move_and_slide()
 	if abs(velocity.x) > 0.0:
 		pivot.scale.x = sign(velocity.x)
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if sprite.animation == "attack":
+		sprite.play("idle")

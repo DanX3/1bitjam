@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgvrneq1gcki0"]
+[gd_scene load_steps=8 format=3 uid="uid://bgvrneq1gcki0"]
 
 [ext_resource type="PackedScene" uid="uid://bmh6w5rpihe7x" path="res://scenes/Player.tscn" id="1_ge0oy"]
 [ext_resource type="Texture2D" uid="uid://odkd3j1xpvks" path="res://icon.svg" id="2_bfk0s"]
 [ext_resource type="Shader" path="res://library/shaders/black_white.gdshader" id="3_x3wcj"]
 [ext_resource type="PackedScene" uid="uid://by600etqyr3av" path="res://scenes/demon.tscn" id="4_5ri2g"]
+[ext_resource type="PackedScene" uid="uid://c74bo6ax7y0p5" path="res://scenes/caravan.tscn" id="5_sgd8v"]
+[ext_resource type="PackedScene" uid="uid://cl7tyo2fnat2d" path="res://scenes/refugee.tscn" id="6_nbk28"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xwrqi"]
 shader = ExtResource("3_x3wcj")
@@ -56,3 +58,14 @@ grow_vertical = 2
 
 [node name="Demon" parent="." instance=ExtResource("4_5ri2g")]
 position = Vector2(0, -105)
+
+[node name="Caravan" parent="." instance=ExtResource("5_sgd8v")]
+collision_layer = 2
+collision_mask = 0
+speed = 20
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, 90)
+
+[node name="Refugee" parent="." instance=ExtResource("6_nbk28")]
+position = Vector2(-97, -71)

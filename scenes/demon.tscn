@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://by600etqyr3av"]
+[gd_scene load_steps=13 format=3 uid="uid://by600etqyr3av"]
 
 [ext_resource type="Script" path="res://scripts/demon.gd" id="1_6cq5v"]
 [ext_resource type="Texture2D" uid="uid://d2uvfm8pstq0m" path="res://assets/tileset.png" id="1_owrko"]
@@ -30,6 +30,9 @@ radius = 51.0098
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yg4j1"]
 radius = 4.12311
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_po6an"]
+radius = 11.0
 
 [node name="Demon" type="CharacterBody2D"]
 collision_layer = 8
@@ -96,10 +99,15 @@ disabled = true
 debug_color = Color(0.996078, 0, 0.156863, 0.419608)
 
 [node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_po6an")
 
 [connection signal="state_physics_processing" from="StateChart/Root/Walking" to="." method="_on_walking_state_physics_processing"]
 [connection signal="state_physics_processing" from="StateChart/Root/GoToPlayer" to="." method="_on_go_to_player_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/Root/Attack" to="." method="_on_attack_state_entered"]
 [connection signal="body_entered" from="Visibility" to="." method="_on_visibility_body_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

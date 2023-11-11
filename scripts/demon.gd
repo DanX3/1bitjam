@@ -10,7 +10,8 @@ var player: Player
 
 
 func _on_walking_state_physics_processing(delta):
-	velocity = WALK_SPEED * (get_tree().get_first_node_in_group("caravan").global_position - global_position).normalized()
+	var caravanPos = get_tree().get_first_node_in_group("caravan").global_position
+	velocity = WALK_SPEED * (caravanPos - global_position).normalized()
 	move_and_slide()
 
 
@@ -49,3 +50,9 @@ func attack():
 	var tween = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(attackPivot, "rotation", attackPivot.rotation + ATTACK_ANGLE, 1.2)
 	tween.connect("finished", attack)
+
+
+func _on_hurt_box_body_entered(body):
+	if body is Fireball:
+		body.queue_free()
+		queue_free()

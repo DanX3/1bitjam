@@ -21,10 +21,11 @@ EventBusInstance="*res://library/scripts/EventBus.gd"
 
 [display]
 
-window/size/viewport_width=480
-window/size/viewport_height=270
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
 window/stretch/mode="canvas_items"
-window/stretch/scale=2.0
+window/stretch/scale=4.0
 
 [editor_plugins]
 
@@ -64,3 +65,4 @@ fire={
 2d_physics/layer_2="World"
 2d_physics/layer_3="Fireball"
 2d_physics/layer_4="Enemy"
+2d_physics/layer_5="Caravan"

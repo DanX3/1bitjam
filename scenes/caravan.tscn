@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c74bo6ax7y0p5"]
+[gd_scene load_steps=6 format=3 uid="uid://c74bo6ax7y0p5"]
 
 [ext_resource type="Script" path="res://scripts/caravan.gd" id="1_bvopd"]
 [ext_resource type="Texture2D" uid="uid://d2uvfm8pstq0m" path="res://assets/tileset.png" id="2_lhjpw"]
+[ext_resource type="FontFile" uid="uid://d584xxy53m8x" path="res://assets/ArcadeFont.ttf" id="3_asf5t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vg50"]
 size = Vector2(4.17701, 134.766)
@@ -11,6 +12,7 @@ size = Vector2(62.6554, 103.941)
 
 [node name="Caravan" type="CharacterBody2D" groups=["caravan"]]
 scale = Vector2(1.0055, 0.981323)
+collision_layer = 17
 script = ExtResource("1_bvopd")
 speed = 100
 
@@ -37,13 +39,25 @@ position = Vector2(-0.497264, 8.15226)
 shape = SubResource("RectangleShape2D_vp10o")
 debug_color = Color(0.647059, 0.521569, 0, 0.419608)
 
-[node name="Counter" type="Label" parent="."]
+[node name="EnemyCounter" type="Label" parent="."]
 offset_left = -18.8961
 offset_top = 7.13323
 offset_right = 21.1039
 offset_bottom = 33.1332
-text = "1"
+text = "0"
 horizontal_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HumansCounter" type="Label" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 11.0
+offset_top = 10.0
+offset_right = 51.0
+offset_bottom = 33.0
+theme_override_fonts/font = ExtResource("3_asf5t")
+theme_override_font_sizes/font_size = 16
+text = "0"
 
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_enemy_detector_body_entered"]
 [connection signal="body_exited" from="EnemyDetector" to="." method="_on_enemy_detector_body_exited"]

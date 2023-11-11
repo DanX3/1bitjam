@@ -1,6 +1,17 @@
-extends RigidBody2D
+class_name Fireball extends CharacterBody2D
 
 const SPEED := 200.0
+var direction
+var caravan: Caravan
 
 func init(dir: Vector2):
-	apply_central_force(dir * SPEED)
+	direction = dir
+
+func _ready():
+	caravan = get_tree().get_first_node_in_group("caravan")
+
+func _physics_process(delta):
+	var collision = move_and_collide(delta * direction * SPEED)
+	if collision != null:
+		if collision.get_collider().name == caravan.name:
+			queue_free()
