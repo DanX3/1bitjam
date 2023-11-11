@@ -1,11 +1,11 @@
 [gd_scene load_steps=31 format=3 uid="uid://by600etqyr3av"]
 
 [ext_resource type="Script" path="res://scripts/demon.gd" id="1_6cq5v"]
-[ext_resource type="Texture2D" uid="uid://bmgf3luremcvp" path="res://assets/ork_attack.png" id="2_st8qd"]
+[ext_resource type="Texture2D" uid="uid://dpeps7r8qyavx" path="res://assets/ork_attack.png" id="2_st8qd"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="2_yw7jy"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="3_ihjd8"]
-[ext_resource type="Texture2D" uid="uid://csd0sb4c1omui" path="res://assets/ork_die.png" id="3_kipiv"]
-[ext_resource type="Texture2D" uid="uid://beh4q6cwonsfu" path="res://assets/ork_walk.png" id="3_xcl0r"]
+[ext_resource type="Texture2D" uid="uid://06gp76ee8kvs" path="res://assets/ork_die.png" id="3_kipiv"]
+[ext_resource type="Texture2D" uid="uid://c2m1s8e7ua5yc" path="res://assets/ork_walk.png" id="3_xcl0r"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="4_okxnu"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="6_xh6xe"]
 
