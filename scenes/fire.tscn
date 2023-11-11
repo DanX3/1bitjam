@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=3 uid="uid://rg0hpq35kmb2"]
+
+[ext_resource type="Texture2D" uid="uid://d3jeao233gscu" path="res://assets/fire.png" id="1_kcsp4"]
+
+[sub_resource type="Gradient" id="Gradient_v2tcv"]
+offsets = PackedFloat32Array(0, 0.639053, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.869823, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gkchk"]
+gradient = SubResource("Gradient_v2tcv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5b3y7"]
+emission_shape = 1
+emission_sphere_radius = 9.77
+particle_flag_disable_z = true
+gravity = Vector3(0, -100, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 2.0
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_gkchk")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibium"]
+atlas = ExtResource("1_kcsp4")
+region = Rect2(12, 11, 10, 9)
+
+[sub_resource type="Curve" id="Curve_x8gab"]
+_data = [Vector2(0, 0.77453), 0.0, 0.0, 0, 0, Vector2(0.310096, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_6s1l1"]
+curve = SubResource("Curve_x8gab")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8gd71"]
+lifetime_randomness = 0.42
+emission_shape = 1
+emission_sphere_radius = 5.12
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 87.71
+gravity = Vector3(0, -120, 0)
+initial_velocity_max = 15.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 1.5
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_6s1l1")
+turbulence_noise_strength = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7iofx"]
+atlas = ExtResource("1_kcsp4")
+region = Rect2(83, 17, 10, 13)
+
+[node name="Fire" type="Node2D"]
+
+[node name="Smoke" type="GPUParticles2D" parent="."]
+visible = false
+modulate = Color(0.67451, 0.239216, 0, 1)
+position = Vector2(0, -9)
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_5b3y7")
+texture = SubResource("AtlasTexture_ibium")
+
+[node name="Fire1" type="GPUParticles2D" parent="."]
+position = Vector2(0, -5)
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_8gd71")
+texture = SubResource("AtlasTexture_7iofx")
+lifetime = 0.75
+explosiveness = 0.19
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("1_kcsp4")
+region_enabled = true
+region_rect = Rect2(33, 16, 29, 18)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-3, 1)
+texture = ExtResource("1_kcsp4")
+region_enabled = true
+region_rect = Rect2(10, 13, 13, 8)
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("1_kcsp4")
+region_enabled = true
+region_rect = Rect2(10, 13, 13, 8)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(1, 2)
+texture = ExtResource("1_kcsp4")
+region_enabled = true
+region_rect = Rect2(10, 13, 13, 8)
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(4, 1)
+texture = ExtResource("1_kcsp4")
+region_enabled = true
+region_rect = Rect2(10, 13, 13, 8)
