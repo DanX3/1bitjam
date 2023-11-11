@@ -25,6 +25,7 @@ region_enabled = true
 region_rect = Rect2(0, 192, 64.1936, 96.1646)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(3.5567e-07, 8.70499)
 scale = Vector2(10, 0.598)
 shape = SubResource("RectangleShape2D_4vg50")
@@ -36,6 +37,7 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+visible = false
 position = Vector2(-0.497264, 8.15226)
 shape = SubResource("RectangleShape2D_vp10o")
 debug_color = Color(0.647059, 0.521569, 0, 0.419608)

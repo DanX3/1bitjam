@@ -8,7 +8,7 @@ radius = 7.07107
 
 [node name="Fireball" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 18
+collision_mask = 16
 script = ExtResource("1_sk8jg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -18,3 +18,7 @@ shape = SubResource("CircleShape2D_d2gub")
 texture_filter = 1
 texture = ExtResource("2_pr76u")
 region_rect = Rect2(0, 160, 32, 32)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

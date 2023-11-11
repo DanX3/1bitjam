@@ -29,8 +29,7 @@ func _input(event):
 		player.play("fireball")
 
 func spawn_fireball():
-		life -= fireballCost
-		progress.value = life
+		take_damage(fireballCost)
 		var fireball = fireballScene.instantiate()
 		var fireballDir = (get_global_mouse_position() - global_position).normalized()
 		fireball.init(fireballDir)
@@ -56,3 +55,9 @@ func _physics_process(delta):
 func _on_animated_sprite_2d_animation_finished():
 	if sprite.animation == "attack":
 		sprite.play("idle")
+
+func take_damage(damage: float):
+	life -= damage
+	progress.value = life
+	if life <= 0.0:
+		get_tree().change_scene_to_file("res://scenes/world.tscn")
