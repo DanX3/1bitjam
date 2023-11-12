@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c74bo6ax7y0p5"]
+[gd_scene load_steps=11 format=3 uid="uid://c74bo6ax7y0p5"]
 
 [ext_resource type="Script" path="res://scripts/caravan.gd" id="1_bvopd"]
 [ext_resource type="Texture2D" uid="uid://d2uvfm8pstq0m" path="res://assets/tileset.png" id="2_lhjpw"]
 [ext_resource type="FontFile" uid="uid://d584xxy53m8x" path="res://assets/ArcadeFont.ttf" id="3_asf5t"]
 [ext_resource type="Script" path="res://library/scripts/Spawner.gd" id="4_quugf"]
+[ext_resource type="Texture2D" uid="uid://bwdxrektuee17" path="res://assets/icons.png" id="4_wumkv"]
 [ext_resource type="PackedScene" uid="uid://by600etqyr3av" path="res://scenes/demon.tscn" id="5_1o624"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vg50"]
@@ -11,6 +12,10 @@ size = Vector2(41.7703, 80.5036)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vp10o"]
 size = Vector2(62.6554, 103.941)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0gcs"]
+atlas = ExtResource("4_wumkv")
+region = Rect2(18, 4, 7, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hjh0"]
 size = Vector2(37.7921, 75.4084)
@@ -55,6 +60,10 @@ offset_bottom = 33.0
 theme_override_fonts/font = ExtResource("3_asf5t")
 theme_override_font_sizes/font_size = 16
 text = "0"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(4, 16)
+texture = SubResource("AtlasTexture_q0gcs")
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 8
