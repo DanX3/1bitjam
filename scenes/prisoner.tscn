@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://xvhyqe37nd4p"]
 
 [ext_resource type="Script" path="res://scripts/prisoner.gd" id="1_8tvru"]
-[ext_resource type="Texture2D" uid="uid://cftegb5of2etx" path="res://assets/cage.png" id="1_pt5g6"]
+[ext_resource type="Texture2D" uid="uid://dabqnb3yutsj7" path="res://assets/cage.png" id="1_pt5g6"]
 [ext_resource type="PackedScene" uid="uid://dptps1sq6buvr" path="res://scenes/walk_smoke.tscn" id="2_ismst"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dlptc"]

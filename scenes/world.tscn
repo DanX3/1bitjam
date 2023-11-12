@@ -1,10 +1,10 @@
 [gd_scene load_steps=39 format=3 uid="uid://bdu2ye7hxuwnb"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_wy5lg"]
-[ext_resource type="Texture2D" uid="uid://pdljmexgqgda" path="res://assets/tiles_evil.png" id="1_xx67n"]
+[ext_resource type="Texture2D" uid="uid://62kv2g1klkqi" path="res://assets/tiles_evil.png" id="1_xx67n"]
 [ext_resource type="PackedScene" uid="uid://bmh6w5rpihe7x" path="res://scenes/Player.tscn" id="1_ybli1"]
 [ext_resource type="PackedScene" uid="uid://c74bo6ax7y0p5" path="res://scenes/caravan.tscn" id="2_al6kb"]
-[ext_resource type="Texture2D" uid="uid://byt8h66f5eqqh" path="res://assets/tiles_medium.png" id="2_qa7fb"]
+[ext_resource type="Texture2D" uid="uid://cc8p73d1uqmrs" path="res://assets/tiles_medium.png" id="2_qa7fb"]
 [ext_resource type="Texture2D" uid="uid://c21djs5monrq" path="res://assets/tiles_walls.png" id="5_fs8it"]
 [ext_resource type="Texture2D" uid="uid://bksu87d3p4htp" path="res://assets/road.png" id="6_n8ft0"]
 [ext_resource type="Texture2D" uid="uid://oxhhtrudghfh" path="res://assets/green_tiles.png" id="6_vr5rp"]
@@ -91,7 +91,7 @@ curve = SubResource("Curve_12n4u")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q8cpx"]
 emission_shape = 2
-emission_sphere_radius = 5.34
+emission_sphere_radius = 2.0
 particle_flag_disable_z = true
 gravity = Vector3(0, 0, 0)
 orbit_velocity_min = 0.0
@@ -289,10 +289,10 @@ script = ExtResource("11_p7vf3")
 [node name="CursorParticles" type="Node2D" parent="."]
 
 [node name="Particles1" type="GPUParticles2D" parent="CursorParticles"]
-position = Vector2(6, 6)
+position = Vector2(4, 3)
 amount = 32
 process_material = SubResource("ParticleProcessMaterial_q8cpx")
-lifetime = 2.0
+lifetime = 0.5
 
 [node name="FollowCursor2" type="Node2D" parent="CursorParticles"]
 position = Vector2(5, 4)
@@ -303,7 +303,8 @@ script = ExtResource("12_57aso")
 [node name="Pointer" type="Node2D" parent="CanvasLayer"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Pointer"]
-position = Vector2(16, 16)
+position = Vector2(8, 8)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_wr4a2")
 autoplay = "default"
 frame_progress = 0.950701

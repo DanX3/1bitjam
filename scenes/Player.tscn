@@ -6,10 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://b3axu3nrmqki3" path="res://assets/wizard_prepare.png" id="4_6kw2m"]
 [ext_resource type="Script" path="res://library/scripts/Cooldown.gd" id="4_xl085"]
 [ext_resource type="Texture2D" uid="uid://dey5ve8q6mq4n" path="res://assets/wizard_idle.png" id="5_sbtgt"]
-[ext_resource type="Texture2D" uid="uid://siv462vqa644" path="res://assets/border.png" id="6_rw7i7"]
 [ext_resource type="Texture2D" uid="uid://de5ta844hynpo" path="res://assets/black.png" id="7_prn5d"]
 [ext_resource type="Texture2D" uid="uid://dwk382eg4e650" path="res://assets/white.png" id="7_tic3v"]
-[ext_resource type="PackedScene" uid="uid://dptps1sq6buvr" path="res://scenes/walk_smoke.tscn" id="10_qetsn"]
+[ext_resource type="Texture2D" uid="uid://lb0pr0apewmk" path="res://assets/overlay.png" id="9_ef1l6"]
 
 [sub_resource type="Curve" id="Curve_ewt3i"]
 min_value = -1.0
@@ -159,6 +158,10 @@ _data = {
 "fireball": SubResource("Animation_hf67n")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4xbo"]
+atlas = ExtResource("9_ef1l6")
+region = Rect2(-0.107727, 184.99, 71.0262, 84.4796)
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("camera") groups=["player"]]
 collision_mask = 26
 script = ExtResource("1_n43ng")
@@ -183,8 +186,6 @@ position = Vector2(0, -9)
 script = ExtResource("4_xl085")
 duration = 0.5
 
-[node name="WalkSmoke" parent="." instance=ExtResource("10_qetsn")]
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -9)
@@ -201,25 +202,46 @@ libraries = {
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
+[node name="ProgressDischarge" type="TextureProgressBar" parent="CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 22.0
-offset_top = -29.0
-offset_right = 112.0
-offset_bottom = -20.0
+offset_left = 28.0
+offset_top = -39.0
+offset_right = 61.0
+offset_bottom = -7.0
 grow_vertical = 0
 step = 0.01
-value = 30.0
-nine_patch_stretch = true
-stretch_margin_left = 4
-stretch_margin_top = 4
-stretch_margin_right = 4
-stretch_margin_bottom = 4
+value = 25.74
+fill_mode = 3
 texture_under = ExtResource("7_prn5d")
-texture_over = ExtResource("6_rw7i7")
 texture_progress = ExtResource("7_tic3v")
+
+[node name="ProgressCharge" type="TextureProgressBar" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 29.0
+offset_top = -67.0
+offset_right = 62.0
+offset_bottom = -35.0
+grow_vertical = 0
+step = 0.01
+value = 76.61
+fill_mode = 2
+texture_under = ExtResource("7_tic3v")
+texture_progress = ExtResource("7_prn5d")
+
+[node name="Hourglass" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -110.0
+offset_right = 98.0
+offset_bottom = -6.0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_d4xbo")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true

@@ -18,11 +18,13 @@ var life = 100.0
 @onready var pivot = $Pivot
 @onready var sprite = $AnimatedSprite2D
 @onready var player = $AnimationPlayer
-@onready var progress = $CanvasLayer/TextureProgressBar
+@onready var progress1 = $CanvasLayer/ProgressCharge
+@onready var progress2 = $CanvasLayer/ProgressDischarge
 
 func _ready():
 	sprite.play("idle")
-	progress.value = life
+	progress1.value = 100.0 - life
+	progress2.value = 100.0 - life
 	get_node("/root/EventBusInstance").connect("camera_shake", func(): $Camera2D/CameraShake.shake())
 
 func _input(event):
@@ -52,7 +54,6 @@ func _physics_process(delta):
 	move_and_slide()
 	if abs(velocity.x) > 0.0:
 		pivot.scale.x = sign(velocity.x)
-	$WalkSmoke.emitting = velocity.length_squared() > 0.0
 
 
 func _on_animated_sprite_2d_animation_finished():
@@ -63,6 +64,7 @@ func take_damage(damage: float):
 	if damage > fireballCost:
 		$Camera2D/CameraShake.shake()
 	life -= damage
-	progress.value = life
+	progress1.value = 100.0 - life
+	progress2.value = 100.0 - life
 	if life <= 0.0:
 		EventBusInstance.emit_signal("game_over")
