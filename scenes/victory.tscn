@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg05uay575ryw"]
+
+[ext_resource type="FontFile" uid="uid://d584xxy53m8x" path="res://assets/ArcadeFont.ttf" id="1_jeo7s"]
+[ext_resource type="Script" path="res://scripts/victory.gd" id="1_ri22c"]
+[ext_resource type="Shader" path="res://library/shaders/black_white.gdshader" id="3_fwj20"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8xr8l"]
+shader = ExtResource("3_fwj20")
+shader_parameter/threshold = 0.41
+shader_parameter/color1 = Color(0.0392157, 0.180392, 0.266667, 1)
+shader_parameter/color2 = Color(0.988235, 1, 0.8, 1)
+
+[node name="victory" type="Node2D"]
+script = ExtResource("1_ri22c")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(956, 543)
+zoom = Vector2(0.5, 0.5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 2
+offset_left = 448.0
+offset_top = 124.0
+offset_right = 1468.0
+offset_bottom = 232.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_jeo7s")
+theme_override_font_sizes/font_size = 51
+text = "You did It!
+The caravan is safe!"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="refugees" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="refugees_message" type="Label" parent="CanvasLayer/Panel/VBoxContainer/refugees"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jeo7s")
+theme_override_font_sizes/font_size = 32
+text = "Refugees saved: "
+horizontal_alignment = 1
+
+[node name="refugees_counter" type="Label" parent="CanvasLayer/Panel/VBoxContainer/refugees"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jeo7s")
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 2
+
+[node name="Shader" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Shader"]
+material = SubResource("ShaderMaterial_8xr8l")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

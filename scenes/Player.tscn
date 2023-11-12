@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://library/scripts/Cooldown.gd" id="4_xl085"]
 [ext_resource type="Texture2D" uid="uid://dey5ve8q6mq4n" path="res://assets/wizard_idle.png" id="5_sbtgt"]
 [ext_resource type="Texture2D" uid="uid://siv462vqa644" path="res://assets/border.png" id="6_rw7i7"]
-[ext_resource type="Texture2D" uid="uid://de5ta844hynpo" path="res://assets/black.png" id="7_prn5d"]
+[ext_resource type="Texture2D" path="res://assets/black.png" id="7_prn5d"]
 [ext_resource type="Texture2D" uid="uid://dwk382eg4e650" path="res://assets/white.png" id="7_tic3v"]
 
 [sub_resource type="Curve" id="Curve_ewt3i"]

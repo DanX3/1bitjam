@@ -14,7 +14,7 @@ var demonsWaveLeft = 0
 
 var closeDemonsCounter = 0
 var castleMarkerPos: Vector2
-
+var CASTLE_POSITION := 120
 
 func _ready():
 	castleMarkerPos = get_tree().get_first_node_in_group("castle").global_position
@@ -28,6 +28,12 @@ func _process(delta):
 		return
 	velocity = Vector2.UP * speed
 	move_and_slide()
+	
+	if global_position.y < castleMarkerPos.y - CASTLE_POSITION:
+		EventBusInstance.saved_refugees = refugees
+		EventBusInstance.emit_signal("castle_reached")
+		get_tree().change_scene_to_file("res://scenes/victory.tscn")
+	
 
 
 func take_damage():
