@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://by600etqyr3av"]
+[gd_scene load_steps=36 format=3 uid="uid://by600etqyr3av"]
 
 [ext_resource type="Script" path="res://scripts/demon.gd" id="1_6cq5v"]
 [ext_resource type="Texture2D" uid="uid://dpeps7r8qyavx" path="res://assets/ork_attack.png" id="2_st8qd"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://library/scripts/SoundVariations.gd" id="9_plr4e"]
 [ext_resource type="AudioStream" uid="uid://41r3rurlrttq" path="res://assets/Audio/explosion2.ogg" id="10_dwqdj"]
 [ext_resource type="AudioStream" uid="uid://bf01ab68wuc16" path="res://assets/Audio/explosion4.ogg" id="11_wurlv"]
+[ext_resource type="AudioStream" uid="uid://bwbhgv6rfatfq" path="res://assets/Audio/hit1.ogg" id="12_e25cs"]
+[ext_resource type="AudioStream" uid="uid://ccg8cdudrq0dj" path="res://assets/Audio/hit2.ogg" id="13_u5467"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jk7gb"]
 size = Vector2(12, 16)
@@ -297,7 +299,7 @@ one_shot = true
 
 [node name="SoundVariations" type="AudioStreamPlayer2D" parent="."]
 script = ExtResource("9_plr4e")
-streams = Array[AudioStream]([ExtResource("10_dwqdj"), ExtResource("11_wurlv")])
+streams = Array[AudioStream]([ExtResource("10_dwqdj"), ExtResource("11_wurlv"), ExtResource("12_e25cs"), ExtResource("13_u5467")])
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="state_entered" from="StateChart/Root/Walking" to="." method="_on_walking_state_entered"]
