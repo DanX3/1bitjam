@@ -34,8 +34,6 @@ func _process(delta):
 	if global_position.y < castleMarkerPos.y - CASTLE_POSITION:
 		EventBusInstance.saved_refugees = refugees
 		EventBusInstance.emit_signal("castle_reached")
-		get_tree().change_scene_to_file("res://scenes/victory.tscn")
-	
 
 
 func take_damage():
