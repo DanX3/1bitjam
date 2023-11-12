@@ -1,16 +1,17 @@
-[gd_scene load_steps=21 format=3 uid="uid://bdu2ye7hxuwnb"]
+[gd_scene load_steps=22 format=3 uid="uid://bdu2ye7hxuwnb"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_wy5lg"]
-[ext_resource type="Texture2D" uid="uid://62kv2g1klkqi" path="res://assets/tiles_evil.png" id="1_xx67n"]
+[ext_resource type="Texture2D" uid="uid://pdljmexgqgda" path="res://assets/tiles_evil.png" id="1_xx67n"]
 [ext_resource type="PackedScene" uid="uid://bmh6w5rpihe7x" path="res://scenes/Player.tscn" id="1_ybli1"]
 [ext_resource type="PackedScene" uid="uid://c74bo6ax7y0p5" path="res://scenes/caravan.tscn" id="2_al6kb"]
-[ext_resource type="Texture2D" uid="uid://cc8p73d1uqmrs" path="res://assets/tiles_medium.png" id="2_qa7fb"]
+[ext_resource type="Texture2D" uid="uid://byt8h66f5eqqh" path="res://assets/tiles_medium.png" id="2_qa7fb"]
 [ext_resource type="Texture2D" uid="uid://c21djs5monrq" path="res://assets/tiles_walls.png" id="5_fs8it"]
 [ext_resource type="Texture2D" uid="uid://bksu87d3p4htp" path="res://assets/road.png" id="6_n8ft0"]
 [ext_resource type="Texture2D" uid="uid://oxhhtrudghfh" path="res://assets/green_tiles.png" id="6_vr5rp"]
 [ext_resource type="PackedScene" uid="uid://cp6xrx3c021e0" path="res://scenes/demon_camp.tscn" id="9_lf4ax"]
 [ext_resource type="PackedScene" uid="uid://by600etqyr3av" path="res://scenes/demon.tscn" id="10_que6m"]
 [ext_resource type="Shader" path="res://library/shaders/black_white.gdshader" id="11_tq6mm"]
+[ext_resource type="PackedScene" uid="uid://bnqagctpgww5k" path="res://library/scenes/pause_menu.tscn" id="12_4k0kt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bhkcy"]
 texture = ExtResource("1_xx67n")
@@ -187,3 +188,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="game_over_menu" parent="." instance=ExtResource("12_4k0kt")]

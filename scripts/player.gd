@@ -62,4 +62,4 @@ func take_damage(damage: float):
 	life -= damage
 	progress.value = life
 	if life <= 0.0:
-		get_tree().change_scene_to_file("res://scenes/world.tscn")
+		EventBusInstance.emit_signal("game_over")
