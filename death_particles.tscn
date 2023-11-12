@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5vpcd1ob1qg7"]
+
+[ext_resource type="Script" path="res://library/scripts/FreeAfter.gd" id="1_ev2qp"]
+
+[sub_resource type="Gradient" id="Gradient_ihmhu"]
+offsets = PackedFloat32Array(0, 0.844444, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4ye2t"]
+gradient = SubResource("Gradient_ihmhu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_us4yk"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 74.06
+initial_velocity_max = 101.84
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 100.0
+damping_max = 100.0
+angle_min = -720.0
+scale_max = 5.0
+color_ramp = SubResource("GradientTexture1D_4ye2t")
+
+[node name="DeathParticles" type="GPUParticles2D"]
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_us4yk")
+lifetime = 2.0
+speed_scale = 2.0
+explosiveness = 0.9
+
+[node name="FreeAfter" type="Node" parent="."]
+script = ExtResource("1_ev2qp")

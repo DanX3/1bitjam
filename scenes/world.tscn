@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bdu2ye7hxuwnb"]
+[gd_scene load_steps=39 format=3 uid="uid://bdu2ye7hxuwnb"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_wy5lg"]
 [ext_resource type="Texture2D" uid="uid://pdljmexgqgda" path="res://assets/tiles_evil.png" id="1_xx67n"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://godot_state_charts_examples/ant_hill/marker/marker.gd" id="11_p7vf3"]
 [ext_resource type="Shader" path="res://library/shaders/black_white.gdshader" id="11_tq6mm"]
 [ext_resource type="PackedScene" uid="uid://bnqagctpgww5k" path="res://library/scenes/pause_menu.tscn" id="12_4k0kt"]
+[ext_resource type="Script" path="res://library/scripts/FollowCursor.gd" id="12_57aso"]
+[ext_resource type="Texture2D" uid="uid://xtwkvlp0wg8m" path="res://assets/wand.png" id="13_elg4e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bhkcy"]
 texture = ExtResource("1_xx67n")
@@ -79,6 +81,109 @@ size = Vector2(72, 3776)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8oeb2"]
 size = Vector2(1151, 87)
+
+[sub_resource type="Curve" id="Curve_12n4u"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.50079, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1y4g0"]
+curve = SubResource("Curve_12n4u")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q8cpx"]
+emission_shape = 2
+emission_sphere_radius = 5.34
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_max = 720.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_1y4g0")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jfbj"]
+atlas = ExtResource("13_elg4e")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idogl"]
+atlas = ExtResource("13_elg4e")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6oyt"]
+atlas = ExtResource("13_elg4e")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tiwlj"]
+atlas = ExtResource("13_elg4e")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsp67"]
+atlas = ExtResource("13_elg4e")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4t1d"]
+atlas = ExtResource("13_elg4e")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2yk1"]
+atlas = ExtResource("13_elg4e")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_istgq"]
+atlas = ExtResource("13_elg4e")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d44yx"]
+atlas = ExtResource("13_elg4e")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbphi"]
+atlas = ExtResource("13_elg4e")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2htxp"]
+atlas = ExtResource("13_elg4e")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wr4a2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jfbj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idogl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6oyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tiwlj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsp67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4t1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2yk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_istgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d44yx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbphi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2htxp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wdca1"]
 shader = ExtResource("11_tq6mm")
@@ -180,6 +285,31 @@ position = Vector2(247, -3140)
 [node name="CastleMarker" type="Node2D" parent="." groups=["castle"]]
 position = Vector2(417, -3187)
 script = ExtResource("11_p7vf3")
+
+[node name="CursorParticles" type="Node2D" parent="."]
+
+[node name="Particles1" type="GPUParticles2D" parent="CursorParticles"]
+position = Vector2(6, 6)
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_q8cpx")
+lifetime = 2.0
+
+[node name="FollowCursor2" type="Node2D" parent="CursorParticles"]
+position = Vector2(5, 4)
+script = ExtResource("12_57aso")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Pointer" type="Node2D" parent="CanvasLayer"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Pointer"]
+position = Vector2(16, 16)
+sprite_frames = SubResource("SpriteFrames_wr4a2")
+autoplay = "default"
+frame_progress = 0.950701
+
+[node name="FollowCursor" type="Node2D" parent="CanvasLayer/Pointer"]
+script = ExtResource("12_57aso")
 
 [node name="Shader" type="CanvasLayer" parent="."]
 

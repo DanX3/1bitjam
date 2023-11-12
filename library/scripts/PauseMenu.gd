@@ -29,3 +29,13 @@ func _on_cursor_selected(node_name):
 func _game_over():
 	get_tree().paused = true
 	show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+
+func _on_restart_pressed():
+	print("pressed restart")
+	_on_cursor_selected("Restart")
+
+
+func _on_quit_pressed():
+	_on_cursor_selected("Quit")

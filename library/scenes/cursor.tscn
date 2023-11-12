@@ -19,7 +19,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-22, -11)]
+"values": [Vector2(-14, -11)]
 }
 
 [sub_resource type="Animation" id="Animation_l6usn"]
@@ -58,9 +58,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -22.0
+offset_left = -14.0
 offset_top = -11.0
-offset_right = -19.0
+offset_right = -11.0
 offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2

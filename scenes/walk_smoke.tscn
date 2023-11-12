@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://dptps1sq6buvr"]
+
+[ext_resource type="Texture2D" uid="uid://1nte6evvy440" path="res://assets/cursor.png" id="1_d2dqw"]
+
+[sub_resource type="Gradient" id="Gradient_hpbiw"]
+offsets = PackedFloat32Array(0, 0.407407, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.311111, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_davbj"]
+gradient = SubResource("Gradient_hpbiw")
+
+[sub_resource type="Curve" id="Curve_a21gb"]
+_data = [Vector2(0, 0.836299), 0.0, 0.994358, 0, 0, Vector2(0.418994, 0.992883), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.3357, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_yf1y1"]
+curve = SubResource("Curve_a21gb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gr2gi"]
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+damping_min = 19.444
+damping_max = 19.444
+angle_min = -680.0
+angle_max = 720.0
+scale_min = 0.2
+scale_max = 0.6
+scale_curve = SubResource("CurveTexture_yf1y1")
+color_ramp = SubResource("GradientTexture1D_davbj")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d21up"]
+atlas = ExtResource("1_d2dqw")
+region = Rect2(32, 0, 32, 32)
+
+[node name="WalkSmoke" type="GPUParticles2D"]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_gr2gi")
+texture = SubResource("AtlasTexture_d21up")

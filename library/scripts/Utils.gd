@@ -23,4 +23,10 @@ static func get_tile_at(tilemap: TileMap, global_pos: Vector2, layer: int) -> Ti
 	var coords = tilemap.local_to_map(local_pos)
 	return tilemap.get_cell_tile_data(layer, coords)
 
+static func add_here(creator: Node2D, scene: PackedScene) -> Node:
+	var newNode = scene.instantiate()
+	creator.get_parent().add_child(newNode)
+	newNode.global_position = creator.global_position
+	return newNode
+	
 

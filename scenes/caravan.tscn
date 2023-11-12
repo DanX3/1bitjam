@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c74bo6ax7y0p5"]
+[gd_scene load_steps=18 format=3 uid="uid://c74bo6ax7y0p5"]
 
 [ext_resource type="Script" path="res://scripts/caravan.gd" id="1_bvopd"]
 [ext_resource type="Texture2D" uid="uid://d2uvfm8pstq0m" path="res://assets/tileset.png" id="2_lhjpw"]
@@ -6,9 +6,50 @@
 [ext_resource type="Script" path="res://library/scripts/Spawner.gd" id="4_quugf"]
 [ext_resource type="Texture2D" uid="uid://bwdxrektuee17" path="res://assets/icons.png" id="4_wumkv"]
 [ext_resource type="PackedScene" uid="uid://by600etqyr3av" path="res://scenes/demon.tscn" id="5_1o624"]
+[ext_resource type="Script" path="res://library/scripts/SoundVariations.gd" id="6_mmsxs"]
+[ext_resource type="AudioStream" uid="uid://bwbhgv6rfatfq" path="res://assets/Audio/hit1.ogg" id="7_n7fik"]
+[ext_resource type="AudioStream" uid="uid://ccg8cdudrq0dj" path="res://assets/Audio/hit2.ogg" id="8_otcwl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vg50"]
-size = Vector2(41.7703, 80.5036)
+size = Vector2(37.7921, 69.2942)
+
+[sub_resource type="Animation" id="Animation_v7xwr"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, -1.01903), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hpd2a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6uoqt"]
+_data = {
+"RESET": SubResource("Animation_hpd2a"),
+"walk": SubResource("Animation_v7xwr")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vp10o"]
 size = Vector2(62.6554, 103.941)
@@ -18,7 +59,44 @@ atlas = ExtResource("4_wumkv")
 region = Rect2(18, 4, 7, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hjh0"]
-size = Vector2(37.7921, 75.4084)
+size = Vector2(34.8086, 67.2561)
+
+[sub_resource type="Animation" id="Animation_cpvbi"]
+resource_name = "blink"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Caravan:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_atj1d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k32ay"]
+_data = {
+"RESET": SubResource("Animation_atj1d"),
+"blink": SubResource("Animation_cpvbi")
+}
 
 [node name="Caravan" type="CharacterBody2D" groups=["caravan"]]
 scale = Vector2(1.0055, 0.981323)
@@ -35,10 +113,14 @@ region_enabled = true
 region_rect = Rect2(0, 192, 64.1936, 96.1646)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-9.48458e-07, 8.66177)
+position = Vector2(-2.96393e-08, 13.2474)
 shape = SubResource("RectangleShape2D_4vg50")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="WalkPlayer" type="AnimationPlayer" parent="."]
+autoplay = "walk"
+libraries = {
+"": SubResource("AnimationLibrary_6uoqt")
+}
 
 [node name="EnemyDetector" type="Area2D" parent="."]
 collision_layer = 0
@@ -70,7 +152,7 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0, 9.17129)
+position = Vector2(0.497265, 13.2474)
 shape = SubResource("RectangleShape2D_0hjh0")
 
 [node name="Passengers" type="Sprite2D" parent="."]
@@ -88,7 +170,7 @@ parent_path = "/root/world/demons"
 rects = Array[Rect2]([Rect2(-200, -600, 400, 100)])
 
 [node name="DemonInterval" type="Timer" parent="Spawner"]
-wait_time = 3.0
+wait_time = 2.0
 
 [node name="WaveInterval" type="Timer" parent="Spawner"]
 wait_time = 30.0
@@ -96,6 +178,15 @@ autostart = true
 
 [node name="SpawnMarker" type="Marker2D" parent="."]
 position = Vector2(0, -616.515)
+
+[node name="BlinkPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k32ay")
+}
+
+[node name="HitPlayer" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("6_mmsxs")
+streams = Array[AudioStream]([ExtResource("7_n7fik"), ExtResource("8_otcwl")])
 
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_enemy_detector_body_entered"]
 [connection signal="body_exited" from="EnemyDetector" to="." method="_on_enemy_detector_body_exited"]

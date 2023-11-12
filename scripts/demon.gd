@@ -6,6 +6,9 @@ const ATTACK_ANGLE = 1.2 * PI
 const PLAYER_DAMAGE = 5.0
 const AVOID_CARAVAN_ANGLE = 0.25 * PI
 
+var explosion_scene = preload("res://scenes/explosion.tscn")
+var death_parts = preload("res://death_particles.tscn")
+
 var player: Player
 @onready var chart: StateChart = $StateChart
 @onready var attackPivot: Node2D = $AttackPivot
@@ -81,6 +84,7 @@ func attack():
 func _on_hurt_box_body_entered(body):
 	if body is Fireball:
 		body.queue_free()
+		Utils.add_here(self, explosion_scene)
 		chart.send_event("die")
 
 func _on_attack_caravan_state_entered():
@@ -129,6 +133,10 @@ func _on_attack_caravan_state_exited():
 
 func _on_die_state_entered():
 	sprite.play("die")
+	var particles = Utils.add_here(self, death_parts)
+	var player = get_tree().get_first_node_in_group("player")
+	var shootDir = global_position - player.global_position
+	particles.rotation = atan2(shootDir.y, shootDir.x)
 
 
 func _on_idle_visibility_body_entered(body):

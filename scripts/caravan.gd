@@ -25,7 +25,9 @@ func _ready():
 
 func _process(delta):
 	if closeDemonsCounter > 0:
+		$WalkPlayer.stop()
 		return
+	$WalkPlayer.play("walk")
 	velocity = Vector2.UP * speed
 	move_and_slide()
 	
@@ -37,8 +39,8 @@ func _process(delta):
 
 
 func take_damage():
-	get_node("/root/UtilsInstance").frame_freeze(0.5, 0.5)
-	
+	$BlinkPlayer.play("blink")
+	$HitPlayer.play_sound()
 	refugees -= 1
 	counterLabel.text = str(refugees)
 	if refugees <= 0:

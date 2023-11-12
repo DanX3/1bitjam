@@ -23,9 +23,11 @@ var life = 100.0
 func _ready():
 	sprite.play("idle")
 	progress.value = life
+	get_node("/root/EventBusInstance").connect("camera_shake", func(): $Camera2D/CameraShake.shake())
 
 func _input(event):
 	if Input.is_action_just_pressed("fire") and cooldown.is_ready():
+		player.stop()
 		player.play("fireball")
 
 func spawn_fireball():
@@ -50,6 +52,7 @@ func _physics_process(delta):
 	move_and_slide()
 	if abs(velocity.x) > 0.0:
 		pivot.scale.x = sign(velocity.x)
+	$WalkSmoke.emitting = velocity.length_squared() > 0.0
 
 
 func _on_animated_sprite_2d_animation_finished():
