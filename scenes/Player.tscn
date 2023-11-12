@@ -249,7 +249,7 @@ current = true
 
 [node name="Maintheme" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_iqe6y")
-volume_db = 3.765
+volume_db = 14.0
 autoplay = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

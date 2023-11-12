@@ -75,8 +75,7 @@ func _on_wave_interval_timeout():
 	if waves_left < 0:
 		$Spawner/WaveInterval.stop()
 	demonsWaveLeft = WAVE_DEMONS_COUNT
-	$Spawner.spawn()
-	demonsWaveLeft -= 1
+	_on_demon_interval_timeout()
 	$Spawner/DemonInterval.start()
 
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dg05uay575ryw"]
+[gd_scene load_steps=8 format=3 uid="uid://dg05uay575ryw"]
 
 [ext_resource type="FontFile" uid="uid://d584xxy53m8x" path="res://assets/ArcadeFont.ttf" id="1_jeo7s"]
 [ext_resource type="Script" path="res://scripts/victory.gd" id="1_ri22c"]
 [ext_resource type="Texture2D" uid="uid://bwdxrektuee17" path="res://assets/icons.png" id="3_drnsq"]
 [ext_resource type="Shader" path="res://library/shaders/black_white.gdshader" id="3_fwj20"]
+[ext_resource type="PackedScene" uid="uid://bnwqrxeihhk1" path="res://library/scenes/cursor.tscn" id="4_7524d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1lg0y"]
 atlas = ExtResource("3_drnsq")
@@ -17,6 +18,8 @@ shader_parameter/color2 = Color(0.988235, 1, 0.8, 1)
 
 [node name="victory" type="Node2D"]
 script = ExtResource("1_ri22c")
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_scale = 0.05
@@ -67,6 +70,20 @@ theme_override_fonts/font = ExtResource("1_jeo7s")
 text = "0"
 horizontal_alignment = 2
 
+[node name="spacing2" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Retry" type="Label" parent="CanvasLayer/VBoxContainer" groups=["focus"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_jeo7s")
+text = "Retry"
+horizontal_alignment = 1
+
+[node name="Cursor" parent="CanvasLayer" node_paths=PackedStringArray("initial_focus") instance=ExtResource("4_7524d")]
+initial_focus = NodePath("../VBoxContainer/Retry")
+
 [node name="Shader" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Shader"]
@@ -76,3 +93,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[connection signal="selected" from="CanvasLayer/Cursor" to="." method="_on_cursor_selected"]
