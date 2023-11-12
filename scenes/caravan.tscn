@@ -40,7 +40,6 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
-visible = false
 position = Vector2(-0.497264, 8.15226)
 shape = SubResource("RectangleShape2D_vp10o")
 debug_color = Color(0.647059, 0.521569, 0, 0.419608)
@@ -66,7 +65,6 @@ position = Vector2(0, 9.17129)
 shape = SubResource("RectangleShape2D_0hjh0")
 
 [node name="Passengers" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(0.99453, 21.3997)
 scale = Vector2(0.945467, 0.818448)
 texture = ExtResource("2_lhjpw")
@@ -74,6 +72,7 @@ region_enabled = true
 region_rect = Rect2(64, 256, 32, 32)
 
 [node name="Spawner" type="Node2D" parent="."]
+visible = false
 script = ExtResource("4_quugf")
 node_scene = ExtResource("5_1o624")
 parent_path = "/root/world/demons"
