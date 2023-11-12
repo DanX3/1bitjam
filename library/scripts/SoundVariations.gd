@@ -1,4 +1,4 @@
-extends AudioStreamPlayer2D
+class_name SoundVariations extends AudioStreamPlayer2D
 
 @export var streams: Array[AudioStream]
 

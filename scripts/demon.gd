@@ -133,7 +133,9 @@ func _on_attack_caravan_state_exited():
 
 func _on_die_state_entered():
 	sprite.play("die")
+	$SoundVariations.play_sound()
 	$CollisionShape2D.set_deferred("disabled", true)
+	$HurtBox/CollisionShape2D.set_deferred("disabled", true)
 	var particles = Utils.add_here(self, death_parts)
 	var player = get_tree().get_first_node_in_group("player")
 	var shootDir = global_position - player.global_position

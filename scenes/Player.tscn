@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bmh6w5rpihe7x"]
+[gd_scene load_steps=28 format=3 uid="uid://bmh6w5rpihe7x"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_n43ng"]
 [ext_resource type="Script" path="res://library/scripts/CameraShake.gd" id="2_ktmtx"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://de5ta844hynpo" path="res://assets/black.png" id="7_prn5d"]
 [ext_resource type="Texture2D" uid="uid://dwk382eg4e650" path="res://assets/white.png" id="7_tic3v"]
 [ext_resource type="Texture2D" uid="uid://lb0pr0apewmk" path="res://assets/overlay.png" id="9_ef1l6"]
+[ext_resource type="AudioStream" uid="uid://s8cd47xb03db" path="res://assets/Audio/fear-of-halloween.ogg" id="10_efe87"]
 
 [sub_resource type="Curve" id="Curve_ewt3i"]
 min_value = -1.0
@@ -206,10 +207,10 @@ libraries = {
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 28.0
-offset_top = -39.0
-offset_right = 61.0
-offset_bottom = -7.0
+offset_left = 33.0
+offset_top = -44.0
+offset_right = 66.0
+offset_bottom = -12.0
 grow_vertical = 0
 step = 0.01
 value = 25.74
@@ -221,10 +222,10 @@ texture_progress = ExtResource("7_tic3v")
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 29.0
-offset_top = -67.0
-offset_right = 62.0
-offset_bottom = -35.0
+offset_left = 34.0
+offset_top = -71.0
+offset_right = 67.0
+offset_bottom = -39.0
 grow_vertical = 0
 step = 0.01
 value = 76.61
@@ -236,14 +237,17 @@ texture_progress = ExtResource("7_prn5d")
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = -110.0
-offset_right = 98.0
-offset_bottom = -6.0
+offset_left = 13.0
+offset_top = -114.0
+offset_right = 103.0
+offset_bottom = -10.0
 grow_vertical = 0
 texture = SubResource("AtlasTexture_d4xbo")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
+
+[node name="Maintheme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_efe87")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

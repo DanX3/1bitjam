@@ -8,6 +8,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var caravan
 func _ready():
 	caravan = get_tree().get_first_node_in_group("caravan")
+	$SoundVariations.play_sound()
 	$AnimatedSprite2D.flip_h = caravan.global_position.x < global_position.x
 
 func _physics_process(delta):

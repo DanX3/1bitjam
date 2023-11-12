@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cl7tyo2fnat2d"]
+[gd_scene load_steps=12 format=3 uid="uid://cl7tyo2fnat2d"]
 
 [ext_resource type="Script" path="res://scripts/refugee.gd" id="1_cjycd"]
-[ext_resource type="Texture2D" uid="uid://dcvtw07b1dm03" path="res://assets/runner.png" id="2_ylley"]
+[ext_resource type="Texture2D" uid="uid://bqk00rcn70qg5" path="res://assets/runner.png" id="2_ylley"]
+[ext_resource type="Script" path="res://library/scripts/SoundVariations.gd" id="3_6emuw"]
+[ext_resource type="AudioStream" uid="uid://41r3rurlrttq" path="res://assets/Audio/explosion2.ogg" id="4_2caf2"]
+[ext_resource type="AudioStream" uid="uid://bf01ab68wuc16" path="res://assets/Audio/explosion4.ogg" id="5_gxuhu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ng8l"]
 size = Vector2(14, 14)
@@ -57,3 +60,7 @@ position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_s06ae")
 autoplay = "default"
 frame_progress = 0.480664
+
+[node name="SoundVariations" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("3_6emuw")
+streams = Array[AudioStream]([ExtResource("4_2caf2"), ExtResource("5_gxuhu")])
