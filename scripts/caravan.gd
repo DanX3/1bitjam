@@ -1,17 +1,27 @@
 class_name Caravan extends CharacterBody2D
 
+const WAVE_DEMONS_COUNT = 8
+const WAVES_COUNT = 5
+var waves_left = WAVES_COUNT
+var demonsWaveLeft = 0
+
 @export var speed: int = 1
 @export var refugees: int = 10
 
 @onready var counterLabel = $CanvasLayer/HumansCounter
 @onready var passengerSprite = $Passengers
+@onready var spawnMarker = $SpawnMarker
 
 var closeDemonsCounter = 0
+var castleMarkerPos: Vector2
+
 
 func _ready():
+	castleMarkerPos = get_tree().get_first_node_in_group("castle").global_position
 	counterLabel.text = str(refugees)
 	if refugees > 0:
 		passengerSprite.visible = true
+	_on_wave_interval_timeout()
 
 func _process(delta):
 	if closeDemonsCounter > 0:
@@ -49,3 +59,23 @@ func _on_hurt_box_body_entered(body):
 
 func _on_hurt_box_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	take_damage()
+
+
+
+func _on_wave_interval_timeout():
+	waves_left -= 1
+	if waves_left < 0:
+		$Spawner/WaveInterval.stop()
+	demonsWaveLeft = WAVE_DEMONS_COUNT
+	$Spawner.spawn()
+	demonsWaveLeft -= 1
+	$Spawner/DemonInterval.start()
+
+
+func _on_demon_interval_timeout():
+	if spawnMarker.global_position.y < castleMarkerPos.y:
+		return
+	$Spawner.spawn()
+	demonsWaveLeft -= 1
+	if demonsWaveLeft <= 0:
+		$Spawner/WaveInterval.stop()

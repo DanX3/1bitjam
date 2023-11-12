@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c74bo6ax7y0p5"]
+[gd_scene load_steps=9 format=3 uid="uid://c74bo6ax7y0p5"]
 
 [ext_resource type="Script" path="res://scripts/caravan.gd" id="1_bvopd"]
 [ext_resource type="Texture2D" uid="uid://d2uvfm8pstq0m" path="res://assets/tileset.png" id="2_lhjpw"]
 [ext_resource type="FontFile" uid="uid://d584xxy53m8x" path="res://assets/ArcadeFont.ttf" id="3_asf5t"]
+[ext_resource type="Script" path="res://library/scripts/Spawner.gd" id="4_quugf"]
+[ext_resource type="PackedScene" uid="uid://by600etqyr3av" path="res://scenes/demon.tscn" id="5_1o624"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vg50"]
 size = Vector2(41.7703, 80.5036)
@@ -71,7 +73,25 @@ texture = ExtResource("2_lhjpw")
 region_enabled = true
 region_rect = Rect2(64, 256, 32, 32)
 
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("4_quugf")
+node_scene = ExtResource("5_1o624")
+parent_path = "/root/world/demons"
+rects = Array[Rect2]([Rect2(-200, -600, 400, 100)])
+
+[node name="DemonInterval" type="Timer" parent="Spawner"]
+wait_time = 3.0
+
+[node name="WaveInterval" type="Timer" parent="Spawner"]
+wait_time = 30.0
+autostart = true
+
+[node name="SpawnMarker" type="Marker2D" parent="."]
+position = Vector2(0, -616.515)
+
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_enemy_detector_body_entered"]
 [connection signal="body_exited" from="EnemyDetector" to="." method="_on_enemy_detector_body_exited"]
 [connection signal="area_shape_entered" from="HurtBox" to="." method="_on_hurt_box_area_shape_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="timeout" from="Spawner/DemonInterval" to="." method="_on_demon_interval_timeout"]
+[connection signal="timeout" from="Spawner/WaveInterval" to="." method="_on_wave_interval_timeout"]

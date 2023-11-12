@@ -4,6 +4,7 @@ const WALK_SPEED = 40.0
 const PLAYER_PROXIMITY = 20.0
 const ATTACK_ANGLE = 1.2 * PI 
 const PLAYER_DAMAGE = 5.0
+const AVOID_CARAVAN_ANGLE = 0.25 * PI
 
 var player: Player
 @onready var chart: StateChart = $StateChart
@@ -17,10 +18,7 @@ func _on_walking_state_physics_processing(delta):
 	velocity = WALK_SPEED * (caravanPos - global_position).normalized()
 	var collision = move_and_collide(delta * velocity)
 	if collision != null:
-		print("collided")
-		print(collision.get_collider().name)
 		if collision.get_collider().name == "Caravan":
-			print("found caravan")
 			chart.send_event("attack_caravan")
 
 
@@ -41,10 +39,21 @@ func _on_go_to_player_state_physics_processing(delta):
 		chart.send_event("close_to_player")
 		return
 	var playerDir = playerDist.normalized()
+	
+	# avoid the caravan while approaching the player
+	var caravan = get_tree().get_first_node_in_group("caravan")
+	var caravanDir = (caravan.global_position - global_position).normalized()
+	var caravanDist = (caravan.global_position - global_position).length()
+	if caravanDir.dot(playerDir) > 0.7 and caravanDist < playerDist.length():
+		var caravanAngle = atan2(caravanDir.y, caravanDir.x)
+		var playerAngle = atan2(playerDir.y, playerDir.x)
+		playerAngle += (1 if caravanAngle > playerAngle else -1) * AVOID_CARAVAN_ANGLE
+		playerDir = Vector2(cos(playerAngle), sin(playerAngle))
+		
+	
 	velocity = WALK_SPEED * playerDir
 	var collision = move_and_collide(delta * velocity)
 	if collision != null:
-		print(collision.get_collider().name)
 		if collision.get_collider().name == "Caravan":
 			chart.send_event("attack_caravan")
 

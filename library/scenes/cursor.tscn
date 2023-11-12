@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnwqrxeihhk1"]
+[gd_scene load_steps=7 format=3 uid="uid://bnwqrxeihhk1"]
 
 [ext_resource type="Script" path="res://library/scripts/Cursor.gd" id="1_pciqk"]
-[ext_resource type="Texture2D" uid="uid://cm68xqngr4ggp" path="res://library/assets/arrowBeige_right.png" id="2_mhuxe"]
+[ext_resource type="Texture2D" uid="uid://1nte6evvy440" path="res://assets/cursor.png" id="2_6jkoj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8py18"]
+atlas = ExtResource("2_6jkoj")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="Animation" id="Animation_bc8q8"]
 length = 0.001
@@ -31,7 +35,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(0.5, 2),
 "update": 0,
-"values": [Vector2(-35, -11), Vector2(-22, -11)]
+"values": [Vector2(-14, -11), Vector2(-3, -11)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u633h"]
@@ -48,12 +52,21 @@ anchors_preset = 0
 script = ExtResource("1_pciqk")
 
 [node name="Image" type="TextureRect" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -22.0
 offset_top = -11.0
-offset_bottom = 11.0
-texture = ExtResource("2_mhuxe")
-stretch_mode = 2
+offset_right = -19.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_8py18")
+expand_mode = 1
+stretch_mode = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "cursor_wave"

@@ -15,10 +15,9 @@ func _process(delta):
 		destroy_after()
 		set_process(false)
 	else:
-		queue_free()
+		get_parent().queue_free()
 
 func destroy_after():
-	print("destroy after ", free_delay)
 	var timer = Timer.new()
 	timer.autostart = true
 	timer.one_shot = true
