@@ -11,7 +11,6 @@ var scroll_container: WeakRef = weakref(null)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	if initial_focus != null:
 		call_deferred("focus", initial_focus)
 

@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://d584xxy53m8x" path="res://assets/ArcadeFont.ttf" id="2_dmhlj"]
 [ext_resource type="Texture2D" uid="uid://dwk382eg4e650" path="res://assets/white.png" id="2_ikrkg"]
 [ext_resource type="PackedScene" uid="uid://bnwqrxeihhk1" path="res://library/scenes/cursor.tscn" id="2_xt2ev"]
-[ext_resource type="Texture2D" path="res://assets/black.png" id="3_445ww"]
+[ext_resource type="Texture2D" uid="uid://de5ta844hynpo" path="res://assets/black.png" id="3_445ww"]
 
 [sub_resource type="Animation" id="Animation_omp5v"]
 length = 0.001
