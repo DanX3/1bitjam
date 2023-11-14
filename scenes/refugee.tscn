@@ -73,5 +73,6 @@ autoplay = "default"
 frame_progress = 0.480664
 
 [node name="SoundVariations" type="AudioStreamPlayer2D" parent="."]
+volume_db = -8.342
 script = ExtResource("3_6emuw")
 streams = Array[AudioStream]([ExtResource("4_2caf2"), ExtResource("5_gxuhu")])

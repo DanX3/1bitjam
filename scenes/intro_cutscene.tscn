@@ -1,8 +1,8 @@
-[gd_scene load_steps=34 format=3 uid="uid://if5jmjl8btrm"]
+[gd_scene load_steps=36 format=3 uid="uid://if5jmjl8btrm"]
 
-[ext_resource type="Texture2D" uid="uid://pdljmexgqgda" path="res://assets/tiles_evil.png" id="1_b0bsm"]
+[ext_resource type="Texture2D" uid="uid://62kv2g1klkqi" path="res://assets/tiles_evil.png" id="1_b0bsm"]
 [ext_resource type="Script" path="res://scripts/intro_cutscene.gd" id="1_j8isr"]
-[ext_resource type="Texture2D" uid="uid://byt8h66f5eqqh" path="res://assets/tiles_medium.png" id="2_q0tmh"]
+[ext_resource type="Texture2D" uid="uid://cc8p73d1uqmrs" path="res://assets/tiles_medium.png" id="2_q0tmh"]
 [ext_resource type="Texture2D" uid="uid://bksu87d3p4htp" path="res://assets/road.png" id="3_r5l58"]
 [ext_resource type="Texture2D" uid="uid://c21djs5monrq" path="res://assets/tiles_walls.png" id="4_ahgh5"]
 [ext_resource type="Texture2D" uid="uid://oxhhtrudghfh" path="res://assets/green_tiles.png" id="5_fmp63"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://b0vh772a4yolq" path="res://fireball.png" id="7_tjopf"]
 [ext_resource type="Shader" path="res://library/shaders/black_white.gdshader" id="8_jvwo4"]
 [ext_resource type="Texture2D" uid="uid://xtwkvlp0wg8m" path="res://assets/wand.png" id="9_yq4e6"]
+[ext_resource type="Texture2D" uid="uid://dwk382eg4e650" path="res://assets/white.png" id="10_po1wl"]
+[ext_resource type="Texture2D" uid="uid://de5ta844hynpo" path="res://assets/black.png" id="11_mrgd2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bhkcy"]
 texture = ExtResource("1_b0bsm")
@@ -158,114 +160,6 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_maksy"]
-shader = ExtResource("8_jvwo4")
-shader_parameter/threshold = 0.41
-shader_parameter/color1 = Color(0.0392157, 0.180392, 0.266667, 1)
-shader_parameter/color2 = Color(0.988235, 1, 0.8, 1)
-
-[sub_resource type="Animation" id="Animation_3q4ty"]
-resource_name = "intro"
-length = 30.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player:can_control")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Label:text")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 7.3, 9.1, 11, 12.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": ["", "I got it!", "I finally mastered the forgotten magic...", "...even if it drains my soul...", "I now have the power to liberate the people and give them another chance!"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("sceptre:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 7.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("sceptre:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(-0.1, 2.1, 3.6, 5, 6.2, 7.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-272, -2944), Vector2(256, -3000), Vector2(317, -3030), Vector2(299, -3075), Vector2(265, -3079), Vector2(264, -3041)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Player:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 12.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Player:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(12.7, 15, 30),
-"transitions": PackedFloat32Array(1, 1, 0.0947323),
-"update": 0,
-"values": [Vector2(264, -3041), Vector2(417, -3041), Vector2(417, 38)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Label:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 14.9),
-"transitions": PackedFloat32Array(1, 1.7411),
-"update": 1,
-"values": [true, false]
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath(".")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(30),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"start_game"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_aslem"]
 length = 0.001
 tracks/0/type = "value"
@@ -283,7 +177,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Label:text")
+tracks/1/path = NodePath("CanvasLayer/Panel/Label:text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -319,14 +213,116 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Label:visible")
+tracks/4/path = NodePath("CanvasLayer/Panel:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(-0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_3q4ty"]
+resource_name = "intro"
+length = 23.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:can_control")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Panel/Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 7.3, 9.1, 11, 12.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "I got it!", "I finally mastered the forgotten magic...", "...even if it drains my soul...", "I now have the power to liberate the people and give them another chance!"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sceptre:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 7.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sceptre:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.1, 3.6, 5, 6.2, 7.3),
+"transitions": PackedFloat32Array(0.5, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-272, -2944), Vector2(256, -3000), Vector2(317, -3030), Vector2(299, -3075), Vector2(265, -3079), Vector2(264, -3041)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Player:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 12.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Player:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(12.7, 15.9, 22.9),
+"transitions": PackedFloat32Array(1, -4.14106, 0.0947323),
+"update": 0,
+"values": [Vector2(264, -3041), Vector2(417, -3041), Vector2(417, 38)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(23),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_game"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/Panel:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 7.3, 15.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ee7ij"]
@@ -334,6 +330,12 @@ _data = {
 "RESET": SubResource("Animation_aslem"),
 "intro": SubResource("Animation_3q4ty")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_maksy"]
+shader = ExtResource("8_jvwo4")
+shader_parameter/threshold = 0.41
+shader_parameter/color1 = Color(0.0392157, 0.180392, 0.266667, 1)
+shader_parameter/color2 = Color(0.988235, 1, 0.8, 1)
 
 [node name="IntroCutscene" type="Node2D"]
 script = ExtResource("1_j8isr")
@@ -347,15 +349,6 @@ layer_0/tile_data = PackedInt32Array(-1441763, 1, 0, -983011, 131073, 0, -131069
 [node name="Player" parent="." instance=ExtResource("6_e2vgg")]
 position = Vector2(264, -3041)
 
-[node name="Label" type="Label" parent="."]
-offset_left = 86.0
-offset_top = -3100.0
-offset_right = 436.0
-offset_bottom = -2929.0
-scale = Vector2(0.987505, 1.91414)
-theme_override_fonts/font = ExtResource("7_lkf17")
-horizontal_alignment = 1
-
 [node name="Fireball" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(418, -3133)
@@ -368,6 +361,61 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_mmxue")
 autoplay = "default"
 
+[node name="IntroSequence" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ee7ij")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.5
+offset_top = 24.0
+offset_right = 130.5
+offset_bottom = 104.0
+grow_horizontal = 2
+
+[node name="Border" type="TextureRect" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_po1wl")
+
+[node name="BG" type="TextureRect" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_mrgd2")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -124.5
+offset_top = 25.0
+offset_right = 119.5
+offset_bottom = 196.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("7_lkf17")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [node name="Shader" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Shader"]
@@ -377,8 +425,3 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="IntroSequence" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_ee7ij")
-}

@@ -48,7 +48,8 @@ func _process(delta):
 		queue_redraw()
 
 func _draw():
-	if rects != null:
-		for rect in rects:
-			if rect != null:
-				draw_rect(rect, Color(Color.DODGER_BLUE, 0.5))
+	if Engine.is_editor_hint():
+		if rects != null:
+			for rect in rects:
+				if rect != null:
+					draw_rect(rect, Color(Color.DODGER_BLUE, 0.5))

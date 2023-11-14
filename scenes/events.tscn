@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dirvi2500v01r"]
+
+[ext_resource type="Script" path="res://library/scripts/EventBus.gd" id="1_x4sub"]
+[ext_resource type="AudioStream" uid="uid://dk5w7k5tc5p74" path="res://assets/Audio/Retro Mystic.ogg" id="2_d4ut6"]
+
+[node name="Events" type="Node"]
+script = ExtResource("1_x4sub")
+
+[node name="Maintheme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_d4ut6")
+volume_db = 14.0
+autoplay = true
+max_distance = 2e+06
+attenuation = 0.00328475

@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-EventBusInstance="*res://library/scripts/EventBus.gd"
 UtilsInstance="*res://library/scripts/Utils.gd"
+EventBusInstance="*res://scenes/events.tscn"
 
 [display]
 

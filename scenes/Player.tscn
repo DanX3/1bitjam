@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bmh6w5rpihe7x"]
+[gd_scene load_steps=27 format=3 uid="uid://bmh6w5rpihe7x"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_n43ng"]
 [ext_resource type="Script" path="res://library/scripts/CameraShake.gd" id="2_ktmtx"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://de5ta844hynpo" path="res://assets/black.png" id="7_prn5d"]
 [ext_resource type="Texture2D" uid="uid://dwk382eg4e650" path="res://assets/white.png" id="7_tic3v"]
 [ext_resource type="Texture2D" uid="uid://lb0pr0apewmk" path="res://assets/overlay.png" id="9_ef1l6"]
-[ext_resource type="AudioStream" uid="uid://dk5w7k5tc5p74" path="res://assets/Audio/Retro Mystic.ogg" id="10_iqe6y"]
 
 [sub_resource type="Curve" id="Curve_ewt3i"]
 min_value = -1.0
@@ -246,10 +245,5 @@ texture = SubResource("AtlasTexture_d4xbo")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
-
-[node name="Maintheme" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("10_iqe6y")
-volume_db = 14.0
-autoplay = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

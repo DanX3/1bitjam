@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://xvhyqe37nd4p"]
+[gd_scene load_steps=9 format=3 uid="uid://xvhyqe37nd4p"]
 
 [ext_resource type="Script" path="res://scripts/prisoner.gd" id="1_8tvru"]
 [ext_resource type="Texture2D" uid="uid://dabqnb3yutsj7" path="res://assets/cage.png" id="1_pt5g6"]
+[ext_resource type="Script" path="res://library/scripts/Spawner.gd" id="3_axeai"]
+[ext_resource type="PackedScene" uid="uid://cl7tyo2fnat2d" path="res://scenes/refugee.tscn" id="4_nti2y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dlptc"]
 atlas = ExtResource("1_pt5g6")
@@ -42,5 +44,11 @@ frame_progress = 0.386655
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -2.5)
 shape = SubResource("RectangleShape2D_sdmnq")
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("3_axeai")
+node_scene = ExtResource("4_nti2y")
+parent_path = "/root/world"
+rects = Array[Rect2]([Rect2(-25, -25, 50, 50)])
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
